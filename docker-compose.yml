@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: site
+    volumes:
+      - ./www:/var/www/html/
+      - ./server/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./server/apache2.conf:/etc/apache2/apache2.conf
+      - ./server/php.ini:/usr/local/etc/php/php.ini
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: your_postgres_user
+      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_DB: your_postgres_db
+
+  db:
+    image: postgres:13
+    container_name: my-postgres-db
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: your_postgres_user
+      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_DB: your_postgres_db
+
+volumes:
+  pg_data:
