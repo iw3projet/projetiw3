@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\View;
+use App\Core\Verificator;
 use App\Forms\Login;
 use App\Forms\Register;
 use App\Models\User;
@@ -29,23 +30,28 @@ class Security
         $form = new Register();
         $configForm = $form->getConfig();
 
+        $errors = [];
 
+        if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
+            $verificator = new Verificator();
+            //Est-ce que les données sont OK
+            if($verificator->checkForm($configForm, $_REQUEST, $errors))
+            {
+                $user = new User();
+                $user->setFirstname($_REQUEST['firstname']);
+                $user->setLastname($_REQUEST['lastname']);
+                $user->setEmail($_REQUEST['email']);
+                $user->setPwd($_REQUEST['pwd']);
+                $user->save();
+                header('Location: /');
+            }
+        }
 
         $view = new View("Security/register", "back");
         $view->assign("form", $configForm);
-
-        if (isset($_POST["firstname"])) {
-            $newUser = new User;
-
-            if ($_POST["pwd"] == $_POST["pwd_val"]) {
-                $newUser->setFirstname($_POST["firstname"]);
-                $newUser->setLastname($_POST["lastname"]);
-                $newUser->setEmail($_POST["email"]);
-                $newUser->setPwd($_POST["pwd"]);
-                $newUser->save();
-            }else {
-                print_r("password dont match");
-            }
-        }
+        $view->assign("formErrors", $errors);
     }
+
+
+
 }
