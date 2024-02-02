@@ -4,12 +4,15 @@ use App\Core\DB;
 class User extends DB
 {
     private ?int $id = null;
-    protected string $firstname;
-    protected string $lastname;
+    protected string $login;
     protected string $email;
-    protected string $pwd;
+    protected string $password;
+    protected string $password_key;
+    protected int $role;
     protected int $status;
     protected int $isDeleted;
+    protected string $created;
+    protected string $updated;
 
     /**
      * @return int
@@ -30,35 +33,18 @@ class User extends DB
     /**
      * @return string
      */
-    public function getFirstname(): string
+    public function getLogin(): string
     {
-        return $this->firstname;
+        return $this->login;
     }
 
     /**
-     * @param string $firstname
+     * @param string $login
      */
-    public function setFirstname(string $firstname): void
+    public function setlogin(string $login): void
     {
-        $firstname = ucwords(strtolower(trim($firstname)));
-        $this->firstname = $firstname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastname(): string
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * @param string $lastname
-     */
-    public function setLastname(string $lastname): void
-    {
-        $lastname = strtoupper(trim($lastname));
-        $this->lastname = $lastname;
+        $login = ucwords(strtolower(trim($login)));
+        $this->login = $login;
     }
 
     /**
@@ -83,16 +69,16 @@ class User extends DB
      */
     public function getPwd(): string
     {
-        return $this->pwd;
+        return $this->password;
     }
 
     /**
-     * @param string $pwd
+     * @param string $password
      */
-    public function setPwd(string $pwd): void
+    public function setPwd(string $password): void
     {
-        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-        $this->pwd = $pwd;
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $password;
     }
 
     /**

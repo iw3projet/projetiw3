@@ -16,7 +16,7 @@ class Security
         $form = new Login();
         $configForm = $form->getConfig();
 
-        print_r($_POST);
+        //print_r($_POST);
 
         $view = new View("Security/login", "back");
         $view->assign("form", $configForm);

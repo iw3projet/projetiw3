@@ -9,9 +9,11 @@ class DB
     private $table;
     public function __construct()
     {
+        $optionsJson = file_get_contents('./options.json');
+        $optionsArray = json_decode($optionsJson, true);
         //Connexion à la bdd
         try{
-            $this->pdo = new \PDO("pgsql:host=postgres;port=5432;dbname=esgi", "esgi", "esgipwd");
+            $this->pdo = new \PDO("pgsql:host=".$optionsArray["db_host"].";port=5432;dbname=".$optionsArray["db_name"], $optionsArray["db_username"], $optionsArray["db_pwd"]);
         }catch (\PDOException $exception){
             echo "Erreur de connexion à la base de données : ".$exception->getMessage();
         }
