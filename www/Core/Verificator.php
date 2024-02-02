@@ -7,7 +7,6 @@ class Verificator
 
     public function checkForm($config, $data, &$errors): bool
     {
-
         if( count($config['inputs']) != count($data)){
             die("Tentative de hack");
         }
@@ -41,6 +40,11 @@ class Verificator
     public static function checkEmail(String $email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    public static function checkDB(): bool
+    {
+
     }
 
 

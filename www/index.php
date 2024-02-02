@@ -31,7 +31,14 @@ $uri = strtolower($_SERVER["REQUEST_URI"]);
 $uri = strtok($uri, "?");
 if(strlen($uri )>1) $uri = rtrim($uri, "/");
 
-
+if ($uri == "/install") {
+    
+}else {
+    include "Includes/Functions.php";
+    $controller = "App\\Includes\\Functions";
+    $object = new $controller();
+    $object->is_framework_installed();
+}
 
 //Récupérer le contenu du fichier routes.yaml
 $fileRoute = "routes.yaml";
