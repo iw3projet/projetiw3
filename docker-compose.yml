@@ -39,7 +39,7 @@ services:
     
     working_dir: /app
     volumes:
-      - .:/app
+      - ./www:/app
     
     command: >
       sh -c "npm install && npm run build && npm run dev"
