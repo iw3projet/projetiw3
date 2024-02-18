@@ -23,17 +23,28 @@ services:
     volumes:
       - postges_data:/var/lib/postgresql/data
 
-
   pgadmin:
-      image: dpage/pgadmin4:latest
-      environment:
-        PGADMIN_DEFAULT_EMAIL: esgi@pgadmin.com
-        PGADMIN_DEFAULT_PASSWORD: esgipwd
-        PGADMIN_LISTEN_PORT: 80
-      ports:
-        - 15432:80
-      depends_on:
-        - postgres
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: esgi@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: esgipwd
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - 15432:80
+    depends_on:
+      - postgres
+
+  vite:
+    image: node:latest
+    
+    working_dir: /app
+    volumes:
+      - ./www:/app
+    
+    command: >
+      sh -c "npm install && npm run build && npm run dev"
+    environment:
+      - TTY=1
 
 volumes:
   postges_data:
