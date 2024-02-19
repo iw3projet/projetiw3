@@ -13,6 +13,9 @@ namespace App;
 //Nettoyage de la chaîne
 // /login?id=3
 
+echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
+
+
 spl_autoload_register("App\myAutoloader");
 function myAutoloader($class)
 {

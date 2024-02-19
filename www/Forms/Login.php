@@ -13,7 +13,7 @@ class Login
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-                "class"=>"form",
+                "class"=>"formConnexion",
                 "id"=>"form-login",
                 "submit"=>"se connecter",
                 "error"=>"Identifiants incorrects"
@@ -22,16 +22,18 @@ class Login
                 "email"=>[
                     "type"=>"email",
                     "id"=>"form-login-email",
+                    "label"=>"EMAIL",
                     "required"=>true,
                     "placeholder"=>"Votre email",
-                    "class"=>"form-input",
+                    "class"=>"formConnexion-input-group",
                 ],
                 "pwd"=>[
                     "type"=>"password",
                     "id"=>"form-login-pwd",
+                    "label"=>"MOT DE PASSE",
                     "required"=>true,
                     "placeholder"=>"Votre mot de passe",
-                    "class"=>"form-input",
+                    "class"=>"formConnexion-input-group",
                 ]
             ]
         ];
