@@ -16,6 +16,7 @@ namespace App;
 echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
 
 
+session_start();
 spl_autoload_register("App\myAutoloader");
 function myAutoloader($class)
 {

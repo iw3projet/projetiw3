@@ -21,6 +21,7 @@
                     name="<?= $name ?>"
                     type="<?= $input["type"]??"text"?>"
                     class="<?= $input["class"]??""?>"
+                    value="<?= $input["value"]??""?>"
                     id="<?= $input["id"]??""?>"
                     placeholder="<?= $input["placeholder"]??""?>"
                     <?= $input["required"]?"required":""  ?>
