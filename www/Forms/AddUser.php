@@ -29,6 +29,13 @@ class AddUser {
                     "placeholder" => "Votre nom d'utilisateur",
                     "class" => "form-input",
                 ],
+                "email" => [
+                    "type" => "email",
+                    "id" => "add_user-email",
+                    "required" => true,
+                    "placeholder" => "Votre email",
+                    "class" => "form-input",
+                ],
                 "pwd" => [
                     "type" => "password",
                     "id" => "add_user-pwd",
@@ -37,14 +44,13 @@ class AddUser {
                     "placeholder" => "Votre mot de passe",
                     "class" => "form-input",
                 ],
-                "email" => [
-                    "type" => "email",
-                    "id" => "add_user-email",
-                    "label"=>"EMAIL",
+                "pwd_val" => [
+                    "type" => "password",
+                    "id" => "add_user-pwd-val",
                     "required" => true,
-                    "placeholder" => "Votre email",
+                    "placeholder" => "confirmer votre mot de passe",
                     "class" => "form-input",
-                ],             
+                ],
             ]
         ];
     }

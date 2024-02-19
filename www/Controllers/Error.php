@@ -8,5 +8,10 @@ class Error {
         http_response_code(404);
     }
 
+    public function notConnected(): void
+    {
+        echo "vous devez être connecté pour accéder à cette page";
+    }
+
 }
 

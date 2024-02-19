@@ -29,3 +29,22 @@
 /build:
   controller: PageBuilder
   action: SetComponent
+/forgot-pwd:
+  controller: PwdRecovery
+  action: forgotPwd
+
+/resetpwd:
+  controller: PwdRecovery
+  action: resetPwd
+
+/pagebuilder:
+  controller: PageBuilder
+  action: renderPages
+
+/update-pwd:
+  controller: UserUpdate
+  action: updateUser
+
+/connection-error:
+  controller: Error
+  action: notConnected
