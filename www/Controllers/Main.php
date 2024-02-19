@@ -1,21 +1,23 @@
 <?php
 namespace App\Controllers;
 
-class Main{
+use App\Core\View;
 
-    public function home(): void
-    {
+
+class Main {
+    public function home(): void {
         if (isset($_SESSION["auth_user"])) {
             echo "Bonjour ".$_SESSION["auth_user"]["email"];
         }else {
-            echo "Page d'acceuil";
+            $view = new View("Main/home", "front");
         }
-        
     }
 
-    public function aboutUs(): void
-    {
-        echo "ceci est la page a propos";
+    public function aboutUs(): void {
+        $view = new View("Main/aboutUs", "front");
     }
 
+    public function contact(): void {
+        $view = new View("Main/contact", "front");
+    }
 }
