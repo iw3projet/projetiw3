@@ -36,6 +36,13 @@ class AddUser {
                     "placeholder" => "Votre email",
                     "class" => "form-input",
                 ],
+                "email" => [
+                    "type" => "email",
+                    "id" => "add_user-email",
+                    "required" => true,
+                    "placeholder" => "Votre email",
+                    "class" => "form-input",
+                ],
                 "pwd" => [
                     "type" => "password",
                     "id" => "add_user-pwd",
