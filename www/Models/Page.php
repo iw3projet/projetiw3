@@ -90,4 +90,17 @@ class Page extends DB
         $this->user_id = $user_id;
     }
 
+    public function getCreated(): ?string
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param date created
+     */
+    public function setCreated(string $time): void
+    {
+        $this->created = $time;
+    }
+
 }
