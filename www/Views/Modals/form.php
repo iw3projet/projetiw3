@@ -4,6 +4,7 @@
 </div>
 <?php endif;?>
 
+
 <form
         action="<?= $config["config"]["action"]??"" ?>"
         method="<?= $config["config"]["method"]??"POST" ?>"
@@ -12,7 +13,10 @@
 >
 
     <?php foreach ($config["inputs"] as $name=>$input):?>
-
+            <label class="labelForm"
+                    > <?= $input["label"] ?>
+            </label>
+            <br>
             <input
                     name="<?= $name ?>"
                     type="<?= $input["type"]??"text"?>"
@@ -21,9 +25,8 @@
                     placeholder="<?= $input["placeholder"]??""?>"
                     <?= $input["required"]?"required":""  ?>
                     ><br>
-
     <?php endforeach;?>
 
 
-    <input type="submit" value="<?= $config["config"]["submit"]??"Envoyer" ?>">
+    <input type="submit" class="<?= $config["config"]["class"]??""?>"  value="<?= $config["config"]["submit"]??"Envoyer" ?>">
 </form>

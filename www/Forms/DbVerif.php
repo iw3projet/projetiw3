@@ -24,6 +24,7 @@ class DbVerif {
                 "db_host" => [
                     "type" => "text",
                     "id" => "verif_db-db_host",
+                    "label"=>"HOST BASE DE DONNEES",
                     "required" => true,
                     "placeholder" => "DB Host",
                     "class" => "form-input",
@@ -31,6 +32,7 @@ class DbVerif {
                 "db_name" => [
                     "type" => "text",
                     "id" => "verif_db-db_name",
+                    "label"=>"NOM BASE DE DONNEES",
                     "required" => true,
                     "placeholder" => "DB Name",
                     "class" => "form-input",
@@ -38,6 +40,7 @@ class DbVerif {
                 "db_userName" => [
                     "type" => "text",
                     "id" => "verif_db-db_userName",
+                    "label"=>"NOM UTILISATEUR",
                     "required" => true,
                     "placeholder" => "DB UserName",
                     "class" => "form-input",
@@ -45,6 +48,7 @@ class DbVerif {
                 "db_pwd" => [
                     "type" => "db_password",
                     "id" => "verif_db-db_pwd",
+                    "label"=>"MOT DE PASSE BDD",
                     "required" => true,
                     "placeholder" => "DB Pwd",
                     "class" => "form-input",

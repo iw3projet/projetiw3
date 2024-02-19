@@ -24,6 +24,7 @@ class AddUser {
                 "username" => [
                     "type" => "text",
                     "id" => "add_user-username",
+                    "label"=>"NOM UTILISATEUR",
                     "required" => true,
                     "placeholder" => "Votre nom d'utilisateur",
                     "class" => "form-input",
@@ -31,6 +32,7 @@ class AddUser {
                 "pwd" => [
                     "type" => "password",
                     "id" => "add_user-pwd",
+                    "label"=>"MOT DE PASSE",
                     "required" => true,
                     "placeholder" => "Votre mot de passe",
                     "class" => "form-input",
@@ -38,6 +40,7 @@ class AddUser {
                 "email" => [
                     "type" => "email",
                     "id" => "add_user-email",
+                    "label"=>"EMAIL",
                     "required" => true,
                     "placeholder" => "Votre email",
                     "class" => "form-input",
