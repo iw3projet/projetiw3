@@ -71,8 +71,17 @@ class DB
 
         if($return == "object")
             $query->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+
         return $query->fetch();
     }
+
+    public function select(string $sql, array $parameters)
+    {
+        $query = $this->pdo->prepare($sql);
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
+    
 
     public function checkUnique(string $bddKey,$value) : bool
     {
