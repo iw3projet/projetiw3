@@ -10,21 +10,26 @@
         
         <?php
 
-        var_dump($_POST);
-        $slots_arr = [&$slot1,&$slot2,&$slot3];
+        $slot1 = null;
+        $slot2 = null;
+        $slot3 = null;
 
-        foreach ($_REQUEST as $key => $value) {
-            if (array_key_exists($key,$slots_arr) )
-            {
-                $slots_arr[$key] = $value;
-            }
+        $slots = 3 ;
+
+        $json_content = $this->data;
+        $content = json_decode($json_content["content"]);
+
+        foreach ($content as $key => $value) 
+        {   
+            $$key = $value;
         }
         
         
-        $slots = count($slots_arr) ?>
+        echo("<h1>$slot1</h1>");
+        echo("<h2>$slot2</h2>");
+        echo("<h3>$slot3</h3>");
+        ?>
     
-        <?php echo($slot1) ?>
-        <?php echo($slot2) ?>
-        <?php echo($slot3) ?>
+
     </body>
 </html>

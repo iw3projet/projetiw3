@@ -36,7 +36,14 @@ class CreatePage {
                     "placeholder" => "Selectionner une template",
                     "value" => "",
                     "class" => "form-input",
-                ],           
+                ],"slug" => [
+                    "type" => "text",
+                    "id" => "add_page-slug",
+                    "required" => true,
+                    "placeholder" => "ajouter un slug",
+                    "value" => "",
+                    "class" => "form-input",
+                ],          
             ]
         ];
     }

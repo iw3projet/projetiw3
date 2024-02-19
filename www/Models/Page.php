@@ -6,10 +6,11 @@ class Page extends DB
     private ?int $id = null;
     protected string $title;
     protected string $content;
+    protected string $slug;
     protected string $template;
     protected ?int $user_id;
     protected string $created;
-    protected string $updated;
+    protected ?string $updated;
 
     /**
      * @return int
@@ -58,6 +59,22 @@ class Page extends DB
     public function setContent(string $content): void
     {
         $this->content = $content;
+    }
+
+        /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void
+    {
+        $this->slug = "/".str_replace("/","",strtolower(trim($slug))) ;
     }
 
     /**

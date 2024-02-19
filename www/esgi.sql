@@ -24,6 +24,7 @@ CREATE TABLE esgi_page (
     id_page SERIAL PRIMARY KEY,
     title VARCHAR(45),
     content TEXT,
+    slug VARCHAR(50),
     template VARCHAR(100),
     created date,
     updated date,
