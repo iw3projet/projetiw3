@@ -46,23 +46,6 @@ class Security
             }
         }
 
-        $errors = [];
-
-        if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
-            $verificator = new Verificator();
-            //Est-ce que les données sont OK
-            if($verificator->checkForm($configForm, $_REQUEST, $errors))
-            {
-                $data = array("email" => $_REQUEST['email']);
-                $user = new User();
-                $result = $user->getOneBy($data);
-
-
-                var_dump($result);
-                //header('Location: /');
-            }
-        }
-
         $view = new View("Security/login", "back");
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);

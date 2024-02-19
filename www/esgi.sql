@@ -26,14 +26,14 @@ CREATE TABLE esgi_user (
 );
 
 CREATE TABLE esgi_page (
-    id_page SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     title VARCHAR(45) UNIQUE,
     content TEXT,
     slug  VARCHAR(50) UNIQUE,
     template VARCHAR(100),
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    user_id INTEGER REFERENCES esgi_user(id_user)
+    user_id INTEGER REFERENCES esgi_user(id)
 );
 
 CREATE TABLE esgi_comment (
