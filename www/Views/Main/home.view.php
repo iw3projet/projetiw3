@@ -1,34 +1,4 @@
 <section>
-	<nav class="navbar">
-		<div class="container">
-               <a href="#" class="navbar_title">Navbar</a>
-               <button class="navbar_toggle_button" data-target="#content">
-                    menu
-               </button>
-               <div class="navbar_toggle_content" id="content">
-                    <ul>
-                         <li>
-                              <a href="#" class="active">Home</a>
-                         </li>
-                         <li>
-                              <a href="#">Features</a>
-                         </li>
-                         <li>
-                              <a href="#">Pricing</a>
-                         </li>
-                         <li>
-                              <a href="#" class="disabled">Disabled</a>
-                         </li>
-                    </ul>
-                    <form>
-                         <input type="text" placeholder="Search" />
-                         <button class="button button-outline">Search</button>
-                    </form>
-               </div>
-	     </div>
-	</nav>
-</section>
-<section>
 	<div
 		class="banner banner-text"
 		style="background-image: url('/images/fond.jpg')">
@@ -78,15 +48,16 @@
 	</div>
 </section>	
 <section>
-    <div class="container">
-          <h2>Horaires et Coordonnées</h2>
+	<h1>Horaires et Coordonnées</h1>
+	<hr />
+    	<div class="container">
+          
           <p><strong>Horaires d'ouverture :</strong> Lundi - Dimanche : 11h00 - 22h00</p>
           <p><strong>Adresse :</strong> 123 Rue du Restaurant, Ville, Code Postal</p>
           <p><strong>Téléphone :</strong> +XX XXX XXX XXX</p>
           <p><strong>Email :</strong> info@restaurant.com</p>
-    </div>
+    	</div>
 </section>
-<section>
 <section>
      <h1>Galerie de Photos</h1>
 	<hr />
