@@ -37,14 +37,7 @@ class Security
                     $errors[] = "Identifiant inccorect";
                     header('Location: /login');
                 }
-
-                
-
-                
-
-                
-                
-                
+  
             }else{
                 $_POST["user"] = "test";
 

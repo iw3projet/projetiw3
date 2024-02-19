@@ -15,6 +15,7 @@ class ViewPage
     public function show(): void
     {
 
+        var_dump($_GET["id"]);
         
         $view = new View("PagesTemplates/page_demo", "front");
 

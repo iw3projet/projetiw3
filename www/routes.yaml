@@ -22,9 +22,13 @@
   controller: Install
   action: install
 
-/builder:
-  controller: Builder
-  action: build
+/prebuild:
+  controller: PageBuilder
+  action: createpage
+
+/build:
+  controller: PageBuilder
+  action: SetComponent
 
 /page:
   controller: ViewPage
