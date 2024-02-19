@@ -21,14 +21,13 @@ CREATE TABLE esgi_user (
 );
 
 CREATE TABLE esgi_page (
-    id_page SERIAL,
+    id_page SERIAL PRIMARY KEY,
     title VARCHAR(45),
-    content VARCHAR(45),
+    content TEXT,
+    template VARCHAR(100),
     created date,
     updated date,
-    user_id integer,
-    PRIMARY KEY (id_page),
-    FOREIGN KEY (user_id) REFERENCES esgi_user(id_user)
+    user_id INTEGER REFERENCES esgi_user(id_user)
 );
 
 CREATE TABLE esgi_comment (

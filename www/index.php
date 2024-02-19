@@ -13,6 +13,7 @@ namespace App;
 //Nettoyage de la chaîne
 // /login?id=3
 
+session_start();
 spl_autoload_register("App\myAutoloader");
 function myAutoloader($class)
 {

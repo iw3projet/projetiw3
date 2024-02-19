@@ -21,3 +21,11 @@
 /install:
   controller: Install
   action: install
+
+/builder:
+  controller: Builder
+  action: build
+
+/page:
+  controller: ViewPage
+  action: show
