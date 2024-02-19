@@ -13,6 +13,10 @@
                     > <?= $input["label"] ?>
             </label>
             <br>
+            <label class="labelForm"
+                    > <?= $input["label"] ?>
+            </label>
+            <br>
             <input
                     name="<?= $name ?>"
                     type="<?= $input["type"]??"text"?>"
@@ -24,5 +28,6 @@
     <?php endforeach;?>
 
 
+    <input type="submit" class="<?= $config["config"]["class"]??""?>"  value="<?= $config["config"]["submit"]??"Envoyer" ?>">
     <input type="submit" class="<?= $config["config"]["class"]??""?>"  value="<?= $config["config"]["submit"]??"Envoyer" ?>">
 </form>
