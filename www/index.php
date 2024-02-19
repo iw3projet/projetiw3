@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Controllers\Page;
+
 /*
     Si nous sommes sur l'url /login alors il faut instancier
     la class (controller) Security et appeler la method (Action) login
@@ -17,6 +19,8 @@ echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />');
 
 
 session_start();
+
+
 spl_autoload_register("App\myAutoloader");
 function myAutoloader($class)
 {
@@ -87,12 +91,19 @@ if(!empty($listOfRoutes[$uri])){
     }else{
         die("La route ".$uri." ne possède pas de controller dans le ficher ".$fileRoute);
     }
-}else{
-//S'il n'y a pas de correspondance => page 404
-    include "Controllers/Error.php";
-    $object = new Controllers\Error();
-    $object->page404();
 }
+else if (Page::showBySlug($uri))
+{
+
+}
+else {
+    //S'il n'y a pas de correspondance => page 404
+        var_dump($uri);
+        include "Controllers/Error.php";
+        $object = new Controllers\Error();
+        $object->page404();
+    }
+
 
 
 

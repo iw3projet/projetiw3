@@ -29,7 +29,3 @@
 /build:
   controller: PageBuilder
   action: SetComponent
-
-/page:
-  controller: ViewPage
-  action: show
