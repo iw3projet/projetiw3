@@ -26,4 +26,8 @@
 
 
     <input type="submit" value="<?= $config["config"]["submit"]??"Envoyer" ?>">
+
+    <?php if(array_key_exists("delete", $config)):?>
+        <input type="submit" value="Supprimer">
+    <?php endif;?>
 </form>

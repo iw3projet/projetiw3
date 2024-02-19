@@ -41,8 +41,7 @@ class Install{
                     }
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
                     {
-                        $db_verif = new Functions();
-                        $result = $db_verif -> is_db_valid($_REQUEST['db_host'],$_REQUEST['db_name'],$_REQUEST['db_userName'],$_REQUEST['db_pwd']);
+                        $result = $verificator -> is_db_valid($_REQUEST['db_host'],$_REQUEST['db_name'],$_REQUEST['db_userName'],$_REQUEST['db_pwd']);
 
                         if ($result == false) {
                             $errors[]="Erreur lors de la connexion à la base de données";

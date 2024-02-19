@@ -35,5 +35,13 @@ services:
       depends_on:
         - postgres
 
+  composer:
+    restart: 'no'
+    container_name: composer
+    image: composer:latest
+    command: install
+    volumes:
+      - ./www/administrator/php:/app
+
 volumes:
   postges_data:
