@@ -18,6 +18,9 @@ use App\Controllers\Page;
 echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
 
 
+echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
+
+
 <<<<<<< HEAD
 session_start();
 
