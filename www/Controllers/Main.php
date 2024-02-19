@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\View;
+use App\Forms\Contact;
 
 
 class Main {
@@ -18,6 +19,9 @@ class Main {
     }
 
     public function contact(): void {
+        $form = new Contact();
+        $configForm = $form->getConfig();
         $view = new View("Main/contact", "front");
+        $view->assign("form", $configForm);
     }
 }
