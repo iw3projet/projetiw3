@@ -7,6 +7,7 @@ class DB
     private $pdo;
     private $prefix = PREFIX.'_';
     private $table;
+
     public function __construct()
     {
         //Connexion à la bdd
@@ -28,17 +29,14 @@ class DB
         $vars = array_diff_key(get_object_vars($this), get_class_vars(get_class()));
         return $vars;
     }
+
     public function save(): void
     {   
-        
-        //Création et execution d'une requête insert SQL
+        // Création et execution d'une requête insert SQL
         $childVars = $this->getChlidVars();
         if (empty($this->getId())) {
-            //echo "insert";
-            $sql = "INSERT INTO ".$this->table." (".implode(", ", array_keys($childVars)).")
-            VALUES (:".implode(", :", array_keys($childVars)).")";
-        }else{
-            //echo "update";
+            $sql = "INSERT INTO ".$this->table." (".implode(", ", array_keys($childVars)).") VALUES (:".implode(", :", array_keys($childVars)).")";
+        } else {
             $sql = "UPDATE ".$this->table." SET ";
             foreach ($childVars as $key => $value){
                 $sql .= $key."=:".$key.", ";
@@ -49,9 +47,8 @@ class DB
         }
         $query = $this->pdo->prepare($sql);
         $query->execute($childVars);
-
     }
-
+    
     public static function populate($id): object|int
     {
         return (new static())->getOneBy(["id" => $id], "object");
