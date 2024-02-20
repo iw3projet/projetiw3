@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.containerBack {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    height: 100vh;
+}
+
+.navigation {
+    grid-column: 1;
+    padding: 20px;
+}
+
+.leftSide {
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+.section {
+    grid-column: 2;
+    background-color: #ffffffc3;
+    padding: 20px;
+}
