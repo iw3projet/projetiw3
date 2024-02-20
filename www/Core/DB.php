@@ -7,14 +7,16 @@ class DB
     private $pdo;
     private $prefix = "esgi_";
     private $table;
+
     public function __construct()
     {
         $optionsJson = file_get_contents('./options.json');
         $optionsArray = json_decode($optionsJson, true);
+        
         //Connexion à la bdd
-        try{
+        try {
             $this->pdo = new \PDO("pgsql:host=".$optionsArray["db_host"].";port=5432;dbname=".$optionsArray["db_name"], $optionsArray["db_username"], $optionsArray["db_pwd"]);
-        }catch (\PDOException $exception){
+        } catch (\PDOException $exception) {
             echo "Erreur de connexion à la base de données : ".$exception->getMessage();
         }
     
@@ -30,17 +32,14 @@ class DB
         $vars = array_diff_key(get_object_vars($this), get_class_vars(get_class()));
         return $vars;
     }
+
     public function save(): void
     {   
-        
-        //Création et execution d'une requête insert SQL
+        // Création et execution d'une requête insert SQL
         $childVars = $this->getChlidVars();
         if (empty($this->getId())) {
-            //echo "insert";
-            $sql = "INSERT INTO ".$this->table." (".implode(", ", array_keys($childVars)).")
-            VALUES (:".implode(", :", array_keys($childVars)).")";
-        }else{
-            //echo "update";
+            $sql = "INSERT INTO ".$this->table." (".implode(", ", array_keys($childVars)).") VALUES (:".implode(", :", array_keys($childVars)).")";
+        } else {
             $sql = "UPDATE ".$this->table." SET ";
             foreach ($childVars as $key => $value){
                 $sql .= $key."=:".$key.", ";
@@ -51,9 +50,8 @@ class DB
         }
         $query = $this->pdo->prepare($sql);
         $query->execute($childVars);
-
     }
-
+    
     public static function populate($id): object|int
     {
         return (new static())->getOneBy(["id" => $id], "object");
@@ -73,14 +71,23 @@ class DB
             $query->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         return $query->fetch();
     }
-    
+
+    public function getAllBy(array $data, $return = 'array'): array
+    {
+        $sql = "SELECT * FROM " . $this->table . " WHERE ";
+        $params = [];
+        foreach ($data as $key => $value) {
+            $sql .= $key . "=:" . $key . " AND ";
+            $params[':' . $key] = $value;
+        }
+        $sql = substr($sql, 0, -5);
+        $query = $this->pdo->prepare($sql);
+        $query->execute($params);
+
+        if ($return === 'object') {
+            return $query->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        } else {
+            return $query->fetchAll();
+        }
+    } 
 }
-
-
-
-
-
-
-
-
-

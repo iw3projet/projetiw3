@@ -31,16 +31,14 @@ CREATE TABLE esgi_page (
     user_id INTEGER REFERENCES esgi_user(id_user)
 );
 
-CREATE TABLE esgi_comment (
-    id_comment SERIAL,
+CREATE TABLE esgi_review (
+    id_review SERIAL,
     content VARCHAR(255),
     created date,
     updated date,
     approved smallint,
     user_id integer,
-    page_id integer,
-    PRIMARY KEY (id_comment),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id_page),
+    PRIMARY KEY (id_review),
     FOREIGN KEY (user_id) REFERENCES esgi_user(id_user)
 );
 

@@ -6,6 +6,14 @@
   controller: Main
   action: aboutUs
 
+/reviews/add:
+  controller: ReviewController
+  action: showAddReviewForm
+
+/review:
+  controller: ReviewController
+  action: showApprovedReview
+
 /contact:
   controller: Main
   action: contact
