@@ -66,9 +66,12 @@ class Install{
 
                 $errors = [];
 
+                var_dump($_SERVER["REQUEST_METHOD"]);
+                var_dump($configForm["config"]["method"]);
+
                 if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
                     $verificator = new Verificator();
-
+                    
                     $allRequestElements = $_REQUEST;
                     foreach ($_GET as $key => $value) {
                         unset($allRequestElements[$key]);

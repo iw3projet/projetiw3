@@ -7,13 +7,30 @@ class Verificator
 
     public function checkForm($config, $data, &$errors): bool
     {
-        if( count($config['inputs']) != count($data)){
+        var_dump(count($config['elements']));
+        var_dump(count($data));
+
+        $inputs = 0;
+
+        foreach ($config['elements'] as $elem => $value_elem) 
+        {
+            foreach ($config['elements'][$elem] as $key => $value) 
+            {
+                $inputs += 1;
+            }
+        }
+
+        if( $inputs != count($data)){
+            echo "FEUR";
+            
             die("Tentative de hack");
         }
         //Token CSRF ????
-        foreach ($config['inputs'] as $name=>$input){
+        foreach ($config['elements']['inputs'] as $name=>$input){
             if(!isset($data[$name])){
                 die("Tentative de hack");
+            
+
             }
             //Commencer à traiter les verification micro
             if($input["type"]=="email" && !self::checkEmail($data[$name])){
@@ -42,10 +59,10 @@ class Verificator
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    public static function checkDB(): bool
-    {
+    // public static function checkDB(): bool
+    // {
 
-    }
+    // }
 
     
 
