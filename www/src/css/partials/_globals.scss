@@ -30,5 +30,17 @@ input {
 		min-width: rem(220);
 		color: var(--grey);
 	}
+	&[type="submit"] {
+		display: block;
+		width: 30%;
+		min-width: rem(220);
+		padding: 0.67em 1em;
+		border: none;
+		border-radius: 5px;
+		background: rgba(165, 39, 102, 0.75);
+		color: white;
+		cursor: pointer;
+		text-transform: uppercase;
+	}
 	
 }
