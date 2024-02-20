@@ -19,10 +19,11 @@ class Builder
         ];
 
         for ($i=1; $i <= $nb; $i++) {
-            $result["inputs"]["slot$i"] =
+            $result["elements"]["inputs"]["slot$i"] =
             [
                 "type" => "text",
                 "id" => "add_page-slot$i",
+                "label" => "Slot$i",
                 "required" => true,
                 "placeholder" => "Selectionner une valeur pour le slot",
                 "value" => "",

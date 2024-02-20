@@ -28,7 +28,7 @@ class PageBuilder
             //Est-ce que les données sont OK
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
-                
+                var_dump($_REQUEST);
                 header('Location: /build?title='.$_REQUEST["Title"].'&tpl='.$_REQUEST["template"].'&slug='.$_REQUEST["slug"]);
             }
         }
@@ -42,7 +42,7 @@ class PageBuilder
 
     public function SetComponent() : void 
     {
-
+        
         $builder = new Builder;
         $configForm = $builder->GenerateComponentForm($builder->GetTemplateSlots($_GET["tpl"]));
 

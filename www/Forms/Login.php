@@ -18,24 +18,28 @@ class Login
                 "submit"=>"se connecter",
                 "error"=>"Identifiants incorrects"
             ],
-            "inputs"=>[
-                "email"=>[
-                    "type"=>"email",
-                    "id"=>"form-login-email",
-                    "label"=>"EMAIL",
-                    "required"=>true,
-                    "placeholder"=>"Votre email",
-                    "class"=>"formConnexion-input-group",
+            "elements" => [
+
+                "inputs"=>[
+                    "email"=>[
+                        "type"=>"email",
+                        "id"=>"form-login-email",
+                        "label"=>"EMAIL",
+                        "required"=>true,
+                        "placeholder"=>"Votre email",
+                        "class"=>"formConnexion-input-group",
+                    ],
+                    "pwd"=>[
+                        "type"=>"password",
+                        "id"=>"form-login-pwd",
+                        "label"=>"MOT DE PASSE",
+                        "required"=>true,
+                        "placeholder"=>"Votre mot de passe",
+                        "class"=>"formConnexion-input-group",
+                    ]
                 ],
-                "pwd"=>[
-                    "type"=>"password",
-                    "id"=>"form-login-pwd",
-                    "label"=>"MOT DE PASSE",
-                    "required"=>true,
-                    "placeholder"=>"Votre mot de passe",
-                    "class"=>"formConnexion-input-group",
-                ]
-            ]
+            ],
+
         ];
     }
 

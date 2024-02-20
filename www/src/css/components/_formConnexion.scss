@@ -1,5 +1,7 @@
-.formConnexion {
-    
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &-input-group {
         width: 30%;
@@ -8,96 +10,44 @@
         align-items: center;
     }
 
-    
+    .material-symbols-outlined {
+        font-size: 24px;
+        color: white;
+        padding: 5px; 
+        border-radius: 50%; 
+        background-color: rgba(165, 39, 102, 0.75); 
+    }
+
 }
+
+p {
+    text-align: center;
+}
+    
 
 
 .login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &-input-group {
+        width: 30%;
+        margin-bottom: 50px;
+        display: flex; 
+        align-items: center;
+    }
+
+    .material-symbols-outlined {
+        font-size: 24px;
+        color: white;
+        padding: 5px; 
+        border-radius: 50%; 
+        background-color: rgba(165, 39, 102, 0.75); 
+    }
+
 }
 
-.login-form .material-symbols-outlined {
-    font-size: 24px;
-    color: white;
-    padding: 5px; 
-    border-radius: 50%; 
-    background-color: rgba(165, 39, 102, 0.75); 
+p {
+    text-align: center;
 }
-
-
-
-// * {
-//     box-sizing: border-box;
-// }
-
-// body {
-//     font-family: Arial, sans-serif;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     min-height: 100vh;
-//     margin: 0;
-//     background-color: rgba(89, 63, 128, 0.65);
-// }
-
-// .container p .creerCompte {
-//     color: #A52766; 
-//     text-decoration: none;
-// } 
-
-
-// .logo {
-//     width: 100px;
-// }
-
-
-
-
-
-// .input-group {
-//     width: 100%;
-//     margin-bottom: 50px;
-//     display: flex; 
-//     align-items: center;
-// }
-
-// .input-group label {
-//     display: flex; 
-//     align-items: center;
-//     width: 100%;
-// }
-
-// .input-group span {
-//     margin-right: 10px;
-// }
-
-// .input-group input {
-//     flex-grow: 1;
-//     padding: 10px;
-//     border-radius: 5px;
-//     border: 1px solid #ccc;
-// }
-
-// .login-form button {
-//     display: block;
-//     width: 60%;
-//     padding: 10px;
-//     border: none;
-//     border-radius: 5px;
-//     background: rgba(165, 39, 102, 0.75);
-//     color: white;
-//     cursor: pointer;
-//     text-transform: uppercase;
-// } 
-
-
-/* Responsive design */
-// @media (max-width: 600px) {
-//     .container {
-//         width: 100%;
-//         padding: 15px;
-//     }
-// }
