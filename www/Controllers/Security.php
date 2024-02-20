@@ -69,8 +69,6 @@ class Security
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
                 $user = new User();
-                $user->setFirstname($_REQUEST['firstname']);
-                $user->setLastname($_REQUEST['lastname']);
                 $user->setEmail($_REQUEST['email']);
                 $user->setPwd($_REQUEST['pwd']);
                 $user->save();
