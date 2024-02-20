@@ -2,7 +2,6 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="../../dist/demo.css">
         <title>Back</title>
     </head>
     <body>
@@ -11,36 +10,20 @@
         </header>
         <div class="containerBack">
             <nav class="navigation">
-                <div class="leftSide">
-                    <div class="dashboard-text">Dashboard</div>
-                </div>
-                <div class="leftSide">
-                    <div class="article-text">Articles</div>
-                </div>
-                <div class="leftSide">
-                    <div class="media-text">Medias</div>
-                </div>
-                <div class="leftSide">
-                    <div class="page-text">Pages</div>
-                </div>
-                <div class="leftSide">
-                    <div class="comment-text">Comments</div>
-                </div>
-                <div class="leftSide">
-                    <div class="appearance-text">Appearance</div>
-                </div>
-                <div class="leftSide">
-                    <div class="settings-text">Settings</div>
-                </div>
-                <div class="leftSide">
-                    <div class="user-text">Users</div>
-                </div>
-                <div class="leftSide">
-                    <div class="tools-text">Tools</div>
-                </div>
+                <p class="leftSide button button-outline"><a href="#" class="dashboard-text">Dashboard</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="article-text">Articles</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="media-text">Medias</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="page-text">Pages</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="comment-text">Comments</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="appearance-text">Appearance</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="settings-text">Settings</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="user-text">Users</a></p>
+                <p class="leftSide button button-outline"><a href="#" class="tools-text">Tools</a></p>
             </nav>
             <main class="section">
-                <?php include $this->view;?>
+                <?php
+                    include $this->view;   
+                ?>
             </main>
         </div>
     </body>
