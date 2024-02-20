@@ -2,13 +2,14 @@
 
 namespace App\Core;
 
+use LDAP\Result;
+
 class Verificator
 {
 
     public function checkForm($config, $data, &$errors): bool
     {
-        var_dump(count($config['elements']));
-        var_dump(count($data));
+
 
         $inputs = 0;
 
@@ -57,6 +58,20 @@ class Verificator
     public static function checkEmail(String $email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    public static function securiseValue(String $value): string
+    {
+        $result = "";
+
+
+        $value = strip_tags($value);
+
+
+
+        $result = htmlspecialchars($value);
+
+        return $result;
     }
 
     // public static function checkDB(): bool

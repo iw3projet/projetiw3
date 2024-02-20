@@ -28,7 +28,6 @@ class PageBuilder
             //Est-ce que les données sont OK
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
-                var_dump($_REQUEST);
                 header('Location: /build?title='.$_REQUEST["Title"].'&tpl='.$_REQUEST["template"].'&slug='.$_REQUEST["slug"]);
             }
         }
@@ -55,8 +54,9 @@ class PageBuilder
             if($verificator->checkForm($configForm, $_POST, $errors))
             {   
                 $Page = new Page;
+                var_dump(Verificator::securiseValue($_GET["title"]));
 
-                $Page->settitle($_GET["title"]);
+                $Page->settitle(Verificator::securiseValue($_GET["title"]));
 
 
                 $content = [];
@@ -65,16 +65,16 @@ class PageBuilder
                 {
                     if (preg_match("/slot[\d]*\w+/",$key)) 
                     {
-                        $content[$key] = $value;
+                        $content[$key] = Verificator::securiseValue($value);
                     }
                 }
 
-                $json_content = json_encode($content);
 
+                $json_content = json_encode($content);
                 $Page->setContent($json_content);
-                $Page->setSlug($_GET["slug"]);
-                $Page->setTemplate($_GET["tpl"]);
-                $Page->setUserId($_SESSION["auth_user"]["id"]);
+                $Page->setSlug(Verificator::securiseValue($_GET["slug"]));
+                $Page->setTemplate(Verificator::securiseValue($_GET["tpl"]));
+                $Page->setUserId(Verificator::securiseValue($_SESSION["auth_user"]["id"]));
                 $Page->setCreated(date("Y-m-d H:i:s"));
 
                 $Page->save();
