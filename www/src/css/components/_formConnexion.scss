@@ -24,7 +24,6 @@ p {
     text-align: center;
 }
     
-}
 
 
 .login-form {
@@ -39,12 +38,16 @@ p {
         align-items: center;
     }
 
+    .material-symbols-outlined {
+        font-size: 24px;
+        color: white;
+        padding: 5px; 
+        border-radius: 50%; 
+        background-color: rgba(165, 39, 102, 0.75); 
+    }
+
 }
 
-.login-form .material-symbols-outlined {
-    font-size: 24px;
-    color: white;
-    padding: 5px; 
-    border-radius: 50%; 
-    background-color: rgba(165, 39, 102, 0.75); 
+p {
+    text-align: center;
 }

@@ -1,5 +1,5 @@
 {
-    "is_installed": true,
+    "is_installed": false,
     "is_db_installed": true,
     "db_host": "postgres",
     "db_name": "esgi",
