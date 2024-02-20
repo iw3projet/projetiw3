@@ -18,9 +18,12 @@ use App\Controllers\Page;
 echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
 
 
+<<<<<<< HEAD
 session_start();
 
 
+=======
+>>>>>>> ffa0525482a03b3e41c1ec4028b1728384307329
 spl_autoload_register("App\myAutoloader");
 function myAutoloader($class)
 {
