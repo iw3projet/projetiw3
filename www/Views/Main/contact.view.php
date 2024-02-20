@@ -11,6 +11,7 @@
      <h2>Coordonnées</h2>
      <p>123 Rue Principale<br>Ville, Pays<br>Tél: +123 456 789<br>Email: info@votrerestaurant.com</p>
 </section> 
+<section>
      <form class="login-form" method="post">
         <h2>Formulaire de Contact</h2>
         <?php $this->modal("form", $form) ?>

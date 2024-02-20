@@ -70,3 +70,9 @@
 		<img src="/images/image6.jpg" />
 	</div>
 </section>
+<section>
+     <form class="login-form" method="post">
+        <h2>Donnez-nous votre avis</h2>
+        <?php $this->modal("form", $form) ?>
+    </form>
+</section>
