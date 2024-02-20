@@ -19,7 +19,7 @@
                 id="<?= $input["id"] ?? "" ?>" 
                 placeholder="<?= $input["placeholder"] ?? "" ?>" 
                 list="<?= $input["list"] ?? "" ?>" 
-                autocomplete="<?= $input["autocomplete"] ?? "" ?>" 
+                autocomplete="<?= $input["autocomplete"] ?? "on" ?>" 
                 <?= $input["required"] ? "required" : ""  ?>><br>
         <?php endforeach; ?>
         
