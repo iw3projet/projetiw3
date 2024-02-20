@@ -21,20 +21,12 @@ class Register
                 "error" => "Identifiants incorrects"
             ],
             "inputs" => [
-                "firstname" => [
+                "username" => [
                     "type" => "text",
-                    "id" => "form-register-firstname",
-                    "label"=>"PRENOM",
+                    "id" => "form-register-login",
+                    "label"=>"NOM D'UTILISATEUR",
                     "required" => true,
-                    "placeholder" => "Votre Prénom",
-                    "class" => "form-input",
-                ],
-                "lastname" => [
-                    "type" => "text",
-                    "id" => "form-register-lastname",
-                    "label"=>"NOM",
-                    "required" => true,
-                    "placeholder" => "Votre Nom",
+                    "placeholder" => "Votre pseudo",
                     "class" => "form-input",
                 ],
                 "email" => [

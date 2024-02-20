@@ -23,14 +23,18 @@ class UpdateUser
                 "username" => [
                     "type" => "text",
                     "id" => "form-update-user",
-                    "required" => true,
+                    "required" => false,
                     "placeholder" => "Nouveau nom d'utilisateur",
                     "class" => "form-input",
                 ],
+                "deleteUser" => [
+                    "type" => "text",
+                    "id" => "form-update-user",
+                    "required" => false,
+                    "placeholder" => "'CONFIRMER' pour supprimer",
+                    "class" => "form-input",
+                ],
             ],
-            "delete"=>[
-                "status" => "activated"
-            ]
         ];
     }
 

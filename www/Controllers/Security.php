@@ -34,31 +34,10 @@ class Security
                         header('Location: /');
                     }
                 }else {
-                    $errors[] = "Identifiant inccorect";
-                    header('Location: /login');
+                    $errors[] = "Identifiants inccorects";
+                    //header('Location: /login');
                 }
   
-            }else{
-                $_POST["user"] = "test";
-
-                echo "erreur de form";
-            }
-        }
-
-        $errors = [];
-
-        if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
-            $verificator = new Verificator();
-            //Est-ce que les données sont OK
-            if($verificator->checkForm($configForm, $_REQUEST, $errors))
-            {
-                $data = array("email" => $_REQUEST['email']);
-                $user = new User();
-                $result = $user->getOneBy($data);
-
-
-                var_dump($result);
-                //header('Location: /');
             }
         }
 
@@ -66,11 +45,15 @@ class Security
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);
     }
+
+
     public function logout(): void
     {
         session_destroy();
         echo "Vous vous etes bien déconnecter";
     }
+
+
     public function register(): void
     {
         $form = new Register();
@@ -84,8 +67,7 @@ class Security
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
                 $user = new User();
-                $user->setFirstname($_REQUEST['firstname']);
-                $user->setLastname($_REQUEST['lastname']);
+                $user->setLogin($_REQUEST['username']);
                 $user->setEmail($_REQUEST['email']);
                 $user->setPwd($_REQUEST['pwd']);
                 $user->save();

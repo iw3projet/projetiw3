@@ -95,7 +95,7 @@ class PwdRecovery{
 
                 $errors = [];
 
-                var_dump($check["id_user"]);
+                //var_dump($check["id"]);
 
                 
 
@@ -109,7 +109,7 @@ class PwdRecovery{
                     }
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
                     {
-                        $user = new User($check["id_user"]);
+                        $user = new User($check["id"]);
                         $user->setLogin($_REQUEST['pwd']);
                         $user->save();
                     }

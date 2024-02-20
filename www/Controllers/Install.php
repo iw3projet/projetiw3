@@ -24,7 +24,7 @@ class Install{
         }elseif (isset($_GET["step"])) {
 
             if ($_GET["step"] == "1") {
-                if ($optionsArray["is_db_installed"] == true) {
+                if (file_exists("Constantes.php")) {
                     header('Location: /install?step=2');
                 }
                 $form = new DbVerif();
@@ -35,12 +35,14 @@ class Install{
                 if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
                     $verificator = new Verificator();
 
+                    var_dump("icici");
                     $allRequestElements = $_REQUEST;
                     foreach ($_GET as $key => $value) {
                         unset($allRequestElements[$key]);
                     }
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
                     {
+                        var_dump("icici");
                         $result = $verificator -> is_db_valid($_REQUEST['db_host'],$_REQUEST['db_name'],$_REQUEST['db_userName'],$_REQUEST['db_pwd']);
 
                         if ($result == false) {
@@ -57,7 +59,7 @@ class Install{
 
 
             }elseif ($_GET["step"] == "2") {
-                if ($optionsArray["is_db_installed"] == false) {
+                if (!file_exists("Constantes.php")) {
                     header('Location: /install?step=1');
                 }
                 $form = new AddUser();

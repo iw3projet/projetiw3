@@ -32,13 +32,7 @@ class AddUser {
                 "email" => [
                     "type" => "email",
                     "id" => "add_user-email",
-                    "required" => true,
-                    "placeholder" => "Votre email",
-                    "class" => "form-input",
-                ],
-                "email" => [
-                    "type" => "email",
-                    "id" => "add_user-email",
+                    "label"=>"EMAIL",
                     "required" => true,
                     "placeholder" => "Votre email",
                     "class" => "form-input",
@@ -54,6 +48,7 @@ class AddUser {
                 "pwd_val" => [
                     "type" => "password",
                     "id" => "add_user-pwd-val",
+                    "label"=>"CONFIRMEZ VOTRE MOT DE PASSE",
                     "required" => true,
                     "placeholder" => "confirmer votre mot de passe",
                     "class" => "form-input",
