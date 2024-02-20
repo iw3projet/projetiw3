@@ -74,7 +74,18 @@ class DB
         return $query->fetch();
     }
 
-    
+    public function checkUnique(string $bddKey,$value) : bool
+    {
+        $request = $this->getOneBy([$bddKey => $value]);
+        if ($request == 0) 
+        {
+                return true;
+        }else {
+                return false;
+        }
+    }
+
+
     
 }
 

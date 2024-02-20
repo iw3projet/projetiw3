@@ -27,6 +27,7 @@ class Security
 
                 if (!$user_data == 0) 
                 {
+                    
                     if (password_verify($_REQUEST["pwd"],$user_data["password"])) 
                     {
                         $_SESSION["auth_user"]["email"] = $user_data["email"];

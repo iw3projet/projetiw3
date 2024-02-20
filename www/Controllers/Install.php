@@ -40,7 +40,7 @@ class Install{
                         unset($allRequestElements[$key]);
                     }
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
-                    {
+                    {   
                         $db_verif = new Functions();
                         $result = $db_verif -> is_db_valid($_REQUEST['db_host'],$_REQUEST['db_name'],$_REQUEST['db_userName'],$_REQUEST['db_pwd']);
 
@@ -66,8 +66,7 @@ class Install{
 
                 $errors = [];
 
-                var_dump($_SERVER["REQUEST_METHOD"]);
-                var_dump($configForm["config"]["method"]);
+
 
                 if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
                     $verificator = new Verificator();
