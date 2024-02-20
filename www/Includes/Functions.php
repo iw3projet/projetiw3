@@ -5,6 +5,7 @@ namespace App\Includes;
 use App\Models\User;
 
 
+
 class Functions {
 
     
@@ -36,6 +37,7 @@ class Functions {
             $user->setPwd($pwd);
             $user->setEmail($email);
             $user->save();
+
             $optionsArray["is_installed"] = true;
             $updatedJsonData = json_encode($optionsArray, JSON_PRETTY_PRINT);
             file_put_contents('./options.json', $updatedJsonData);
@@ -50,12 +52,31 @@ class Functions {
 
     public function deleteUser($email) {
         try {
-            $sql = "DELETE FROM esgi_user WHERE email = :email";
+            $sql = "DELETE FROM ".PREFIX."_user WHERE email = :email";
             $data = array("email" => $email);
             $user = new User();
             $user->select($sql, $data);
         } catch (\Throwable $th) {
             var_dump($th);
+        }
+    }
+
+    public function createConstFile($host, $user, $username, $pwd) {
+        try {
+            var_dump("ici");
+            if (file_exists("/Constantes.php")) {
+                return false;
+            }
+            $content = '<?php
+                define("DB_HOST", "'.$host.'");
+                define("DB_NAME", "'.$user.'");
+                define("DB_USERNAME", "'.$username.'");
+                define("DB_PWD", "'.$pwd.'");';
+            $path = 'Constantes.php';
+            file_put_contents($path, $content);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
         }
     }
 }

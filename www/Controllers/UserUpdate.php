@@ -11,14 +11,14 @@ use App\Forms\UpdateUser;
 use App\Forms\ResetPwd;
 use App\Includes\Functions;
 use App\Models\User;
+use App\Core\DB;
 use App\Models\PasswordReset;
 
 class UserUpdate{
 
     public function updateUser(): void
     {
-        $_SESSION["email"] = "beggararezki@gmail.com";
-        if (isset($_SESSION["email"])) {
+        if (isset($_SESSION["auth_user"]["email"])) {
             $form = new UpdateUser();
             $configForm = $form->getConfig();
 
@@ -26,33 +26,41 @@ class UserUpdate{
 
             if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
                 $verificator = new Verificator();
-                //Est-ce que les données sont OK
                 if($verificator->checkForm($configForm, $_REQUEST, $errors))
                 {
-                    // $result = $verificator -> doesEmailExists($_SESSION['email']);
-                    
-                    // if (!$result) {
-                    //     var_dump($result);
-                    //     $errors[]="L'email n'existe pas";
-                    // }else {
-
-                    //var_dump($_SESSION);
                     $login = $_REQUEST['username'];
-                    $data = array("email" => $_SESSION['email']);
-                    $user = new User();
-                    $user->setLogin("sdfgsd");
-                    //var_dump($user->getLogin());
-                    $email = $_SESSION['email'];
-                    $user_data = $user->getOneBy(["email" => $_SESSION['email']], "object");
-                    var_dump($user_data);
-                    $newUser = new User();
-                    // $newUser->populate($oldUser["id"]);
-                    // //var_dump($newUser);                    
-                    // $newUser->setLogin($_REQUEST["username"]);
-                    // $newUser->save();
+                    $delete= $_REQUEST['deleteUser'];
 
+                    if ($delete !== '') {
+                        if ($delete === "CONFIRMER") {
+                            
+                            $db = new DB();
+                            $sql = "DELETE FROM ".PREFIX."_user WHERE email = :email";
+                            $email = $_SESSION["auth_user"]["email"];
+
+                            $db->select($sql, ["email" => $email]);
+
+
+                            session_destroy();
+                            header('Location: /');
+                        }else {
+                            $errors[]= "Vous devez bien taper 'CONFIRMER' afin de valider la suppression";
+                        }
+                    }
+
+                    if ($login !== '' && $delete == "") {
+                        $data = array("email" => $_SESSION["auth_user"]["email"]);
+                        $user = new User();
+                        $user_data = $user->getOneBy(["email" => $_SESSION["auth_user"]["email"]]);
+                        $user->setId($user_data["id"]);
+                        //var_dump($user);             
+                        $user->setLogin($_REQUEST["username"]);
+                        $user->save();
+
+                        header('Location: /');
+                    }
+                    
                     //header('Location: /');
-                    //}
                 }
             }
 

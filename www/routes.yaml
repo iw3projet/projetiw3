@@ -41,7 +41,7 @@
   controller: PageBuilder
   action: renderPages
 
-/update-pwd:
+/update-user:
   controller: UserUpdate
   action: updateUser
 

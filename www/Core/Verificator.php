@@ -4,6 +4,8 @@ namespace App\Core;
 
 use LDAP\Result;
 
+use App\Includes\Functions;
+
 class Verificator
 {
 
@@ -90,14 +92,12 @@ class Verificator
     public static function doesEmailExists ($email): bool|object|string|array
     {
         try {
-            $optionsJson = file_get_contents('./options.json');
-            $optionsArray = json_decode($optionsJson, true);
-            $pdo = new \PDO("pgsql:host=".$optionsArray["db_host"].";port=5432;dbname=".$optionsArray["db_name"] , $optionsArray["db_username"], $optionsArray["db_pwd"]);
+            $pdo = new \PDO("pgsql:host=".DB_HOST.";port=5432;dbname=".DB_NAME, DB_USERNAME, DB_PWD);
         } catch (\PDOException $exception) {
             return false;
         }
 
-        $sql = 'SELECT * FROM esgi_user WHERE email = :email';
+        $sql = 'SELECT * FROM '.PREFIX.'_user WHERE email = :email';
         $query= $pdo->prepare($sql);
         $query->execute(['email'=> $email]);
 
@@ -113,14 +113,12 @@ class Verificator
     public static function doesKeyMatches ($key,$email): bool|object|string|array
     {
         try {
-            $optionsJson = file_get_contents('./options.json');
-            $optionsArray = json_decode($optionsJson, true);
-            $pdo = new \PDO("pgsql:host=".$optionsArray["db_host"].";port=5432;dbname=".$optionsArray["db_name"] , $optionsArray["db_username"], $optionsArray["db_pwd"]);
+            $pdo = new \PDO("pgsql:host=".DB_HOST.";port=5432;dbname=".DB_NAME, DB_USERNAME, DB_PWD);
         } catch (\PDOException $exception) {
             return false;
         }
 
-        $sql = "SELECT COUNT(*) FROM esgi_passwordreset WHERE email = :email AND key = :key";
+        $sql = "SELECT COUNT(*) FROM ".PREFIX."_passwordreset WHERE email = :email AND key = :key";
         $query= $pdo->prepare($sql);
         $query->execute(['email'=> $email, 'key' => $key]);
 
@@ -130,7 +128,7 @@ class Verificator
             return false;
         }
 
-        $sql = 'SELECT * FROM esgi_user WHERE email = :email';
+        $sql = 'SELECT * FROM '.PREFIX.'_user WHERE email = :email';
         $query= $pdo->prepare($sql);
         $query->execute(['email'=> $email]);
 
@@ -144,27 +142,41 @@ class Verificator
     public function is_db_valid ($db_host, $db_name, $db_username, $db_pwd) {
 
         try{
-            $optionsJson = file_get_contents('./options.json');
-            $optionsArray = json_decode($optionsJson, true);
+            // $optionsJson = file_get_contents('./options.json');
+            // $optionsArray = json_decode($optionsJson, true);
             $pdo = new \PDO("pgsql:host=".$db_host.";port=5432;dbname=".$db_name , $db_username, $db_pwd);
             $scriptContent = file_get_contents('./esgi.sql');
-            $pdo->exec($scriptContent);
-            print_r('ici');
+            $prefix = bin2hex(random_bytes(2));
+            $scriptEditedContent = str_replace("iciprefix", $prefix, $scriptContent);
+
+            $function = new Functions();
+            $create = $function->createConstFile($db_host, $db_name, $db_username, $db_pwd);
+
+
+            $path = 'Constantes.php';
+            $content = '
+            define("PREFIX", "'.$prefix.'");';
+            file_put_contents($path, $content, FILE_APPEND);
+
+            require_once("Constantes.php");
+
+            $pdo->exec($scriptEditedContent);
             //$pwd = password_hash($db_pwd, PASSWORD_DEFAULT);
-            $optionsArray["is_db_installed"] = true;
-            $optionsArray["db_host"] = $db_host;
-            $optionsArray["db_name"] = $db_name;
-            $optionsArray["db_username"] = $db_username;
-            $optionsArray["db_pwd"] = $db_pwd;
-            $updatedJsonData = json_encode($optionsArray, JSON_PRETTY_PRINT);
-            file_put_contents('./options.json', $updatedJsonData);
+
+
+            var_dump("là");
+
+            
+            // $updatedJsonData = json_encode($optionsArray, JSON_PRETTY_PRINT);
+            // file_put_contents('./options.json', $updatedJsonData);
+
+            return true;
             
         }catch (\PDOException $exception){
             echo $exception;
             return false;
         }
 
-        return true;
     }
 
     

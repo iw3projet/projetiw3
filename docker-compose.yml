@@ -54,13 +54,5 @@ services:
     volumes:
       - ./www/administrator/php:/app
 
-  composer:
-    restart: 'no'
-    container_name: composer
-    image: composer:latest
-    command: install
-    volumes:
-      - ./www/administrator/php:/app
-
 volumes:
   postges_data:

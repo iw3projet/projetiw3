@@ -35,14 +35,10 @@ class Security
                         header('Location: /');
                     }
                 }else {
-                    $errors[] = "Identifiant inccorect";
-                    header('Location: /login');
+                    $errors[] = "Identifiants inccorects";
+                    //header('Location: /login');
                 }
   
-            }else{
-                $_POST["user"] = "test";
-
-                echo "erreur de form";
             }
         }
 
@@ -50,11 +46,15 @@ class Security
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);
     }
+
+
     public function logout(): void
     {
         session_destroy();
         echo "Vous vous etes bien déconnecter";
     }
+
+
     public function register(): void
     {
         $form = new Register();
@@ -68,6 +68,7 @@ class Security
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
                 $user = new User();
+                $user->setLogin($_REQUEST['username']);
                 $user->setEmail($_REQUEST['email']);
                 $user->setPwd($_REQUEST['pwd']);
                 $user->save();

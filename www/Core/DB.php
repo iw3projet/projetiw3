@@ -5,15 +5,13 @@ namespace App\Core;
 class DB
 {
     private $pdo;
-    private $prefix = "esgi_";
+    private $prefix = PREFIX;
     private $table;
     public function __construct()
     {
-        $optionsJson = file_get_contents('./options.json');
-        $optionsArray = json_decode($optionsJson, true);
         //Connexion à la bdd
         try{
-            $this->pdo = new \PDO("pgsql:host=".$optionsArray["db_host"].";port=5432;dbname=".$optionsArray["db_name"], $optionsArray["db_username"], $optionsArray["db_pwd"]);
+            $this->pdo = new \PDO("pgsql:host=".DB_HOST.";port=5432;dbname=".DB_NAME, DB_USERNAME, DB_PWD);
         }catch (\PDOException $exception){
             echo "Erreur de connexion à la base de données : ".$exception->getMessage();
         }

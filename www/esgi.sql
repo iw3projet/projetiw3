@@ -1,17 +1,4 @@
-DROP TABLE IF EXISTS esgi_user CASCADE;
-DROP TABLE IF EXISTS esgi_page CASCADE;
-DROP TABLE IF EXISTS esgi_template CASCADE;
-DROP TABLE IF EXISTS esgi_setting CASCADE;
-DROP TABLE IF EXISTS esgi_term CASCADE;
-DROP TABLE IF EXISTS esgi_comment CASCADE;
-DROP TABLE IF EXISTS esgi_media CASCADE;
-DROP TABLE IF EXISTS esgi_passwordReset CASCADE;
-DROP TABLE IF EXISTS esgi_pages CASCADE;
-DROP TABLE IF EXISTS esgi_page_translations CASCADE;
-DROP TABLE IF EXISTS esgi_uploads CASCADE;
-DROP TABLE IF EXISTS esgi_settings CASCADE;
-
-CREATE TABLE esgi_user (
+CREATE TABLE iciprefix_user (
     id SERIAL,
     login VARCHAR(16),
     password VARCHAR(255),
@@ -25,7 +12,7 @@ CREATE TABLE esgi_user (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE esgi_page (
+CREATE TABLE iciprefix_page (
     id SERIAL PRIMARY KEY,
     title VARCHAR(45) UNIQUE,
     content TEXT,
@@ -33,10 +20,10 @@ CREATE TABLE esgi_page (
     template VARCHAR(100),
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    user_id INTEGER REFERENCES esgi_user(id)
+    user_id INTEGER REFERENCES iciprefix_user(id)
 );
 
-CREATE TABLE esgi_comment (
+CREATE TABLE iciprefix_comment (
     id SERIAL,
     content VARCHAR(255),
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -45,20 +32,20 @@ CREATE TABLE esgi_comment (
     user_id integer,
     page_id integer,
     PRIMARY KEY (id),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id),
-    FOREIGN KEY (user_id) REFERENCES esgi_user(id)
+    FOREIGN KEY (page_id) REFERENCES iciprefix_page(id),
+    FOREIGN KEY (user_id) REFERENCES iciprefix_user(id)
 );
 
-CREATE TABLE esgi_media (
+CREATE TABLE iciprefix_media (
     id SERIAL,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     page_id integer,
     PRIMARY KEY (id),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id)
+    FOREIGN KEY (page_id) REFERENCES iciprefix_page(id)
 );
 
-CREATE TABLE esgi_setting (
+CREATE TABLE iciprefix_setting (
     id SERIAL,
     name VARCHAR(255),
     value VARCHAR(45),
@@ -70,27 +57,27 @@ CREATE TABLE esgi_setting (
 
 
 
-CREATE TABLE esgi_template (
+CREATE TABLE iciprefix_template (
     id SERIAL,
     name VARCHAR(255),
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     page_id integer,
     PRIMARY KEY (id),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id)
+    FOREIGN KEY (page_id) REFERENCES iciprefix_page(id)
 );
 
 
 
-CREATE TABLE esgi_term (
+CREATE TABLE iciprefix_term (
     id SERIAL,
     tagname VARCHAR(255),
     page_id integer,
     PRIMARY KEY (id),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id)
+    FOREIGN KEY (page_id) REFERENCES iciprefix_page(id)
 );
 
-CREATE TABLE esgi_passwordReset (
+CREATE TABLE iciprefix_passwordReset (
     id SERIAL,
     email VARCHAR(250) NOT NULL,
     key VARCHAR(250) NOT NULL,
@@ -98,7 +85,7 @@ CREATE TABLE esgi_passwordReset (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE esgi_pages (
+CREATE TABLE iciprefix_pages (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   layout VARCHAR(255) NOT NULL,
@@ -107,7 +94,7 @@ CREATE TABLE esgi_pages (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE esgi_page_translations (
+CREATE TABLE iciprefix_page_translations (
   id SERIAL PRIMARY KEY,
   page_id INT NOT NULL,
   locale VARCHAR(50) NOT NULL,
@@ -118,10 +105,10 @@ CREATE TABLE esgi_page_translations (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE (page_id, locale),
-  FOREIGN KEY (page_id) REFERENCES esgi_pages(id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (page_id) REFERENCES iciprefix_pages(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE esgi_uploads (
+CREATE TABLE iciprefix_uploads (
   id SERIAL PRIMARY KEY,
   public_id VARCHAR(50) NOT NULL,
   original_file VARCHAR(512) NOT NULL,
@@ -131,7 +118,7 @@ CREATE TABLE esgi_uploads (
   UNIQUE (server_file)
 );
 
-CREATE TABLE esgi_settings (
+CREATE TABLE iciprefix_settings (
   id SERIAL PRIMARY KEY,
   setting VARCHAR(50) NOT NULL,
   value TEXT NOT NULL,
