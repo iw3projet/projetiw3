@@ -73,6 +73,8 @@ class DB
             $query->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         return $query->fetch();
     }
+
+    
     
 }
 
