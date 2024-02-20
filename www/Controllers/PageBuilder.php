@@ -10,6 +10,7 @@ use App\Forms\Login;
 use App\Forms\Register;
 use App\Models\Page;
 use App\Models\User;
+use PDOException;
 
 class PageBuilder
 {
@@ -21,67 +22,70 @@ class PageBuilder
         $configForm = $form->getConfig();
         $errors = [];
 
-        $builder = new Builder;
+        $page = new Page();
 
-        if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
+        if ($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]) {
             $verificator = new Verificator();
-            //Est-ce que les données sont OK
-            if($verificator->checkForm($configForm, $_REQUEST, $errors))
+            
+            if ($page->checkSlug($_REQUEST["slug"]) && $page->checkUnique("title",$_REQUEST["Title"])) 
             {
-                header('Location: /build?title='.$_REQUEST["Title"].'&tpl='.$_REQUEST["template"].'&slug='.$_REQUEST["slug"]);
+                if ($verificator->checkForm($configForm, $_REQUEST, $errors)) {
+                    header('Location: /build?title=' . $_REQUEST["Title"] . '&tpl=' . $_REQUEST["template"] . '&slug=' . $_REQUEST["slug"]);
+                }
+            }else {
+                $errors[] = "Paramètrage Incorrect ";
             }
+            
+            
         }
 
         $view = new View("Builder/createPage", "back");
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);
-        
-  
     }
 
-    public function SetComponent() : void 
+    public function SetComponent(): void
     {
-        
+
         $builder = new Builder;
         $configForm = $builder->GenerateComponentForm($builder->GetTemplateSlots($_GET["tpl"]));
 
 
         $errors = [];
 
-        if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
+        if ($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]) {
             $verificator = new Verificator();
 
-            if($verificator->checkForm($configForm, $_POST, $errors))
-            {   
-                $Page = new Page;
-                var_dump(Verificator::securiseValue($_GET["title"]));
+            if ($verificator->checkForm($configForm, $_POST, $errors)) {
+                try {
+                    $Page = new Page;
 
-                $Page->settitle(Verificator::securiseValue($_GET["title"]));
+                    $Page->settitle(Verificator::securiseValue($_GET["title"]));
 
 
-                $content = [];
+                    $content = [];
 
-                foreach ($_REQUEST as $key => $value) 
-                {
-                    if (preg_match("/slot[\d]*\w+/",$key)) 
-                    {
-                        $content[$key] = Verificator::securiseValue($value);
+                    foreach ($_REQUEST as $key => $value) {
+                        if (preg_match("/slot[\d]*\w+/", $key)) {
+                            $content[$key] = Verificator::securiseValue($value);
+                        }
                     }
+
+
+                    $json_content = json_encode($content);
+                    $Page->setContent($json_content);
+                    $Page->setSlug(Verificator::securiseValue($_GET["slug"]));
+                    $Page->setTemplate(Verificator::securiseValue($_GET["tpl"]));
+                    $Page->setUserId(Verificator::securiseValue($_SESSION["auth_user"]["id"]));
+                    $Page->setCreated(date("Y-m-d H:i:s"));
+
+                    $Page->save();
+
+
+                    header('Location: /');
+                } catch (PDOException $err) {
+                    $errors[] = $err;
                 }
-
-
-                $json_content = json_encode($content);
-                $Page->setContent($json_content);
-                $Page->setSlug(Verificator::securiseValue($_GET["slug"]));
-                $Page->setTemplate(Verificator::securiseValue($_GET["tpl"]));
-                $Page->setUserId(Verificator::securiseValue($_SESSION["auth_user"]["id"]));
-                $Page->setCreated(date("Y-m-d H:i:s"));
-
-                $Page->save();
-
-                
-                header('Location: /');
-                
             }
         }
         $view = new View("Builder/addPageComponent", "back");

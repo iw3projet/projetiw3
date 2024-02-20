@@ -23,13 +23,15 @@
         {   
             $$key = $value;
         }
-        
+
+
         
         echo("<h1>$slot1</h1>");
         echo("<h2>$slot2</h2>");
         echo("<h3>$slot3</h3>");
         ?>
-    
+
+        <img src="<?php echo($slot1)?>" alt="">
 
     </body>
 </html>

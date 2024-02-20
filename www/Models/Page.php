@@ -120,4 +120,16 @@ class Page extends DB
         $this->created = $time;
     }
 
+    public function checkSlug($slug): bool
+    {
+        if (substr_count($slug,"/") >1)
+        {
+            return false;
+        }
+
+        $slug = "/".str_replace("/","",strtolower(trim($slug)));
+        $request = $this->checkUnique("slug",$slug);
+        return $request;
+    }
+
 }

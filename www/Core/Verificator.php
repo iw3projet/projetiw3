@@ -22,7 +22,6 @@ class Verificator
         }
 
         if( $inputs != count($data)){
-            echo "FEUR";
             
             die("Tentative de hack");
         }

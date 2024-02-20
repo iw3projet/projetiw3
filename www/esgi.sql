@@ -22,9 +22,9 @@ CREATE TABLE esgi_user (
 
 CREATE TABLE esgi_page (
     id_page SERIAL PRIMARY KEY,
-    title VARCHAR(45),
+    title VARCHAR(45) UNIQUE,
     content TEXT,
-    slug VARCHAR(50),
+    slug  VARCHAR(50) UNIQUE,
     template VARCHAR(100),
     created date,
     updated date,
