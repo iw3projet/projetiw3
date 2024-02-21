@@ -6,23 +6,23 @@
 
 
 <form action="<?= $config["config"]["action"] ?? "" ?>" method="<?= $config["config"]["method"] ?? "POST" ?>" id="<?= $config["config"]["id"] ?? "" ?>" class="<?= $config["config"]["class"] ?? "" ?>">
-
-        <?php foreach ($config["elements"]["inputs"] as $name => $input) : ?>
-                <label class="labelForm"> <?= $input["label"] ?>
-                </label>
-                <br>
-                <input 
-                name="<?= $name ?>" 
-                type="<?= $input["type"] ?? "text" ?>" 
-                class="<?= $input["class"] ?? "" ?>" 
-                value="<?= $input["value"] ?? "" ?>" 
-                id="<?= $input["id"] ?? "" ?>" 
-                placeholder="<?= $input["placeholder"] ?? "" ?>" 
-                list="<?= $input["list"] ?? "" ?>" 
-                autocomplete="<?= $input["autocomplete"] ?? "on" ?>" 
-                <?= $input["required"] ? "required" : ""  ?>><br>
-        <?php endforeach; ?>
-        
+        <?php if (array_key_exists("inputs",$config["elements"])) : ?>
+                <?php foreach ($config["elements"]["inputs"] as $name => $input) : ?>
+                        <label class="labelForm"> <?= $input["label"] ?>
+                        </label>
+                        <br>
+                        <input 
+                        name="<?= $name ?>" 
+                        type="<?= $input["type"] ?? "text" ?>" 
+                        class="<?= $input["class"] ?? "" ?>" 
+                        value="<?= $input["value"] ?? "" ?>" 
+                        id="<?= $input["id"] ?? "" ?>" 
+                        placeholder="<?= $input["placeholder"] ?? "" ?>" 
+                        list="<?= $input["list"] ?? "" ?>" 
+                        autocomplete="<?= $input["autocomplete"] ?? "on" ?>" 
+                        <?= $input["required"] ? "required" : ""  ?>><br>
+                <?php endforeach; ?>
+        <?php endif; ?>
         <?php if (array_key_exists("selects",$config["elements"])) : ?>
                 <?php foreach ($config["elements"]["selects"] as $name => $select) : ?>
                         <label class="labelForm"> <?= $select["label"] ?></label>
@@ -40,6 +40,23 @@
                         ?>
                         
                         </select>
+                <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if (array_key_exists("wysiwyg",$config["elements"])) : ?>
+                <?php foreach ($config["elements"]["wysiwyg"] as $name => $wysiwyg) : ?>
+                        <label class="labelForm"> <?= $wysiwyg["label"] ?></label>
+                        <br>
+
+                        <textarea 
+                                id="<?= $wysiwyg["id"] ?? "" ?>"
+                                name="<?= $name ?>" 
+                        >
+                
+                        </textarea>
+
+                        <script><?= $wysiwyg["script"] ?></script>
+
                 <?php endforeach; ?>
         <?php endif; ?>
         

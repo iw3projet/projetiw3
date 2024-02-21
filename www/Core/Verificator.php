@@ -26,20 +26,24 @@ class Verificator
             die("Tentative de hack");
         }
         //Token CSRF ????
-        foreach ($config['elements']['inputs'] as $name=>$input){
-            if(!isset($data[$name])){
-                die("Tentative de hack");
-            
-
-            }
-            //Commencer à traiter les verification micro
-            if($input["type"]=="email" && !self::checkEmail($data[$name])){
-                $errors[]="Email incorrect";
-            }
-            else if($input["type"]=="password" && !self::checkPwd($data[$name])){
-                $errors[]="Mot de passe incorrect";
+        if (array_key_exists("inputs",$config['elements'])) 
+        {
+            foreach ($config['elements']['inputs'] as $name=>$input){
+                if(!isset($data[$name])){
+                    die("Tentative de hack");
+                
+    
+                }
+                //Commencer à traiter les verification micro
+                if($input["type"]=="email" && !self::checkEmail($data[$name])){
+                    $errors[]="Email incorrect";
+                }
+                else if($input["type"]=="password" && !self::checkPwd($data[$name])){
+                    $errors[]="Mot de passe incorrect";
+                }
             }
         }
+        
 
 
         return empty($errors);

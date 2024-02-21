@@ -29,3 +29,8 @@
 /build:
   controller: PageBuilder
   action: SetComponent
+
+
+/uploadimg:
+  controller: ImgUploader
+  action: uploader
