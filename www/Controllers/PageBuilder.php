@@ -79,6 +79,7 @@ class PageBuilder
                     $Page->setUserId(Verificator::securiseValue($_SESSION["auth_user"]["id"]));
                     $Page->setCreated(date("Y-m-d H:i:s"));
 
+                    
                     $Page->save();
 
 
