@@ -31,7 +31,7 @@ class Security
                     if (password_verify($_REQUEST["pwd"],$user_data["password"])) 
                     {
                         $_SESSION["auth_user"]["email"] = $user_data["email"];
-                        $_SESSION["auth_user"]["id"] = $user_data["id_user"];
+                        $_SESSION["auth_user"]["id"] = $user_data["id"];
                         header('Location: /');
                     }
                 }else {
