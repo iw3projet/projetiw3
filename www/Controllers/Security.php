@@ -39,6 +39,10 @@ class Security
                     //header('Location: /login');
                 }
   
+            }else{
+                $_POST["user"] = "test";
+
+                // echo "erreur de form";
             }
         }
 

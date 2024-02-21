@@ -16,7 +16,8 @@
 	transition: all var(--transition-duration);
 	&:hover {
 		background-color: var(--button-bg-hover-color);
-		color: var(--text-hover-color);
+		color: var(--grey-darker);
+		// color: var(--text-hover-color);
 	}
 
 	// Modificateurs de couleur
