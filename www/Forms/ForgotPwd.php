@@ -18,15 +18,19 @@ class ForgotPwd
                 "submit"=>"Envoyer un mail",
                 "error"=>"Mail incorrect"
             ],
-            "inputs"=>[
-                "email"=>[
-                    "type"=>"email",
-                    "id"=>"form-forgotPwd-email",
-                    "required"=>true,
-                    "placeholder"=>"Votre email",
-                    "class"=>"form-input",
-                ],
-            ]
+            "elements" => [
+
+                "inputs"=>[
+                    "email"=>[
+                        "type"=>"email",
+                        "id"=>"form-forgotPwd-email",
+                        "label"=>"EMAIL",
+                        "required"=>true,
+                        "placeholder"=>"Votre email",
+                        "class"=>"form-input",
+                    ],
+                ]
+            ],
         ];
     }
 

@@ -49,6 +49,7 @@ class AddUser {
                     "pwd_val" => [
                         "type" => "password",
                         "id" => "add_user-pwd-val",
+                        "label"=>"CONFIRMATION DU MOT DE PASSE",
                         "required" => true,
                         "placeholder" => "confirmer votre mot de passe",
                         "class" => "form-input",

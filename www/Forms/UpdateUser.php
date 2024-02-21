@@ -19,20 +19,25 @@ class UpdateUser
                 "submit"=>"Modifier ",
                 "error"=>"Une erreur est survenue"
             ],
-            "inputs"=>[
-                "username" => [
-                    "type" => "text",
-                    "id" => "form-update-user",
-                    "required" => false,
-                    "placeholder" => "Nouveau nom d'utilisateur",
-                    "class" => "form-input",
-                ],
-                "deleteUser" => [
-                    "type" => "text",
-                    "id" => "form-update-user",
-                    "required" => false,
-                    "placeholder" => "'CONFIRMER' pour supprimer",
-                    "class" => "form-input",
+            "elements" => [
+
+                "inputs"=>[
+                    "username" => [
+                        "type" => "text",
+                        "id" => "form-update-user",
+                        "label"=>"NOM d'UTILISATEUR",
+                        "required" => false,
+                        "placeholder" => "Nouveau nom d'utilisateur",
+                        "class" => "form-input",
+                    ],
+                    "deleteUser" => [
+                        "type" => "text",
+                        "id" => "form-update-user",
+                        "label"=>"SUPPRESSION D'UTILISATEUR",
+                        "required" => false,
+                        "placeholder" => "'CONFIRMER' pour supprimer",
+                        "class" => "form-input",
+                    ],
                 ],
             ],
         ];

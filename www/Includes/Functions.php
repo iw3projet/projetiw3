@@ -79,6 +79,20 @@ class Functions {
             return false;
         }
     }
+
+    function generateRandomString($length = 4) {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $firstCharacter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $charactersLength = strlen($characters);
+        $firstCharacterLength = strlen($firstCharacter);
+        $randomString = $firstCharacter[rand(0, $firstCharacterLength - 1)];
+        
+        for ($i = 1; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+        return $randomString;
+    }
 }
     
 

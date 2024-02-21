@@ -142,11 +142,11 @@ class Verificator
     public function is_db_valid ($db_host, $db_name, $db_username, $db_pwd) {
 
         try{
-            // $optionsJson = file_get_contents('./options.json');
-            // $optionsArray = json_decode($optionsJson, true);
+            $function = new Functions();
             $pdo = new \PDO("pgsql:host=".$db_host.";port=5432;dbname=".$db_name , $db_username, $db_pwd);
             $scriptContent = file_get_contents('./esgi.sql');
-            $prefix = bin2hex(random_bytes(2));
+            
+            $prefix = $function->generateRandomString();
             $scriptEditedContent = str_replace("iciprefix", $prefix, $scriptContent);
 
             $function = new Functions();

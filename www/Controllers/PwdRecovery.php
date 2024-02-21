@@ -109,8 +109,9 @@ class PwdRecovery{
                     }
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
                     {
-                        $user = new User($check["id"]);
-                        $user->setLogin($_REQUEST['pwd']);
+                        $user = new User();
+                        $user->setId($check["id"]);
+                        $user->setPwd($_REQUEST['pwd']);
                         $user->save();
                     }
                 }

@@ -5,7 +5,7 @@ namespace App\Core;
 class DB
 {
     private $pdo;
-    private $prefix = PREFIX;
+    private $prefix = PREFIX.'_';
     private $table;
     public function __construct()
     {

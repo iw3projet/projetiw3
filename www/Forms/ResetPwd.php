@@ -19,22 +19,27 @@ class ResetPwd
                 "submit"=>"Reinitialiser ",
                 "error"=>"Mot de passe incorrect"
             ],
-            "inputs"=>[
-                "pwd" => [
-                    "type" => "password",
-                    "id" => "form-resetPwd-pwd",
-                    "required" => true,
-                    "placeholder" => "Votre mot de passe",
-                    "class" => "form-input",
-                ],
-                "pwd_val" => [
-                    "type" => "password",
-                    "id" => "form-resetPwd-pwd-val",
-                    "required" => true,
-                    "placeholder" => "Confirmer votre mot de passe",
-                    "class" => "form-input",
-                ],
-            ]
+            "elements" => [
+
+                "inputs"=>[
+                    "pwd" => [
+                        "type" => "password",
+                        "id" => "form-resetPwd-pwd",
+                        "label"=>"MOT DE PASSE",
+                        "required" => true,
+                        "placeholder" => "Votre mot de passe",
+                        "class" => "form-input",
+                    ],
+                    "pwd_val" => [
+                        "type" => "password",
+                        "id" => "form-resetPwd-pwd-val",
+                        "label"=>"CONFIRMATION DU MOT DE PASSE",
+                        "required" => true,
+                        "placeholder" => "Confirmer votre mot de passe",
+                        "class" => "form-input",
+                    ],
+                ]
+            ],
         ];
     }
 
