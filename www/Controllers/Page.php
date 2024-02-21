@@ -35,7 +35,7 @@ class Page
     {
 
 
-        $view = new View("PagesTemplates/".$data["template"]);
+        $view = new View("PagesTemplates/".$data["template"],"front");
         $view->assign("content",$data["content"]);
     }
 

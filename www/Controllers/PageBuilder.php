@@ -59,7 +59,7 @@ class PageBuilder
             if ($verificator->checkForm($configForm, $_POST, $errors)) {
                 try {
                     $Page = new Page;
-
+                    var_dump($_REQUEST["slot1"]);
                     $Page->settitle(Verificator::securiseValue($_GET["title"]));
 
 
@@ -67,7 +67,7 @@ class PageBuilder
 
                     foreach ($_REQUEST as $key => $value) {
                         if (preg_match("/slot[\d]*\w+/", $key)) {
-                            $content[$key] = Verificator::securiseValue($value);
+                            $content[$key] = $value;
                         }
                     }
 

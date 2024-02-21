@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8" content="width=device-width">
         <title>Back</title>
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     </head>
     <body>
+        
         <header class="header">
             <!-- <h1>template du back</h1> -->
             <img src="/images/GastroMaker.png" alt="Logo" class="logo">

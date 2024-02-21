@@ -19,19 +19,50 @@ class Builder
         ];
 
         for ($i=1; $i <= $nb; $i++) {
-            $result["elements"]["inputs"]["slot$i"] =
+            $result["elements"]["wysiwyg"]["slot$i"] =
             [
-                "type" => "text",
+                
                 "id" => "add_page-slot$i",
+                "name" => "Slot$i",
                 "label" => "Slot$i",
-                "required" => true,
-                "placeholder" => "Selectionner une valeur pour le slot",
-                "value" => "",
-                "class" => "form-input",
+                "script" => 'ClassicEditor
+                .create( document.querySelector( \'#add_page-slot'.$i.'\' )).catch( err => {
+                    console.error( err.stack );
+                } );'
+
             ];
+
+            
+            // partie a ajouter pour l'image loader pas fonctionelle 
+            // {
+            //     ckfinder:
+            //     {
+            //       uploadUrl: \'uploadimg\'
+            //     }
+            //   } )
+            // .then( editor => {
+            //     window.editor = editor;
+            // }
+            
         }
 
         return $result;
+
+    }
+
+    public function generateWizy($nb)
+    {   
+        for ($i=0; $i <= $nb ; $i++) 
+        { 
+            echo '<div id="editor'.$i.'"></div>';
+            echo '<script>
+            ClassicEditor
+                .create( document.querySelector( \'#editor'.$i.'\' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+             </script>';
+        }
 
     }
 

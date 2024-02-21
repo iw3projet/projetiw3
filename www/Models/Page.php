@@ -121,7 +121,8 @@ class Page extends DB
     }
 
     public function checkSlug($slug): bool
-    {
+    {   
+        $slug = urlencode($slug);
         if (substr_count($slug,"/") >1)
         {
             return false;
