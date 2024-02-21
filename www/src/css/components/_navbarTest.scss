@@ -1,0 +1,39 @@
+    
+    .site-header {
+        background-color: transparent;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        transition: background-color 1s;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &.sticky {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    
+    .site-header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+    }
+    
+    .site-header nav li {
+        float: left;
+    }
+    
+    .site-header nav a {
+        padding: 1em;
+        display: inline-block;
+        color: var(--white);
+        text-decoration: none;
+    }
+    
+

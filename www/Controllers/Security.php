@@ -41,7 +41,7 @@ class Security
             }else{
                 $_POST["user"] = "test";
 
-                echo "erreur de form";
+                // echo "erreur de form";
             }
         }
 

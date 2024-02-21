@@ -1,0 +1,18 @@
+    .site-header {
+        background-color: transparent;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        transition: background-color 1s;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &.sticky {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }

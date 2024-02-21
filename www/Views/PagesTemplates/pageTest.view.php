@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><? $slot1 ?></title>
+		<title>Design guide</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="dist/css/style.css" />
@@ -27,30 +27,43 @@
 		</style>
 	</head>
 	<body>
-
-            <?php
-
-                $slot1 = null;
-                $slot2 = null;
-                $slot3 = null;
-
-                $slots = 3 ;
-
-                $json_content = $this->data;
-                $content = json_decode($json_content["content"]);
-
-                foreach ($content as $key => $value) 
-                {   
-                    $$key = $value;
-                }
-
-        ?>
-
+    <section>
+			<h1>.navbar</h1>
+			<hr />
+			<nav class="navbar">
+				<div class="container">
+					<a href="#" class="navbar_title">Navbar</a>
+					<button class="navbar_toggle_button" data-target="#content">
+						menu
+					</button>
+					<div class="navbar_toggle_content" id="content">
+						<ul>
+							<li>
+								<a href="#" class="active">Home</a>
+							</li>
+							<li>
+								<a href="#">Features</a>
+							</li>
+							<li>
+								<a href="#">Pricing</a>
+							</li>
+							<li>
+								<a href="#" class="disabled">Disabled</a>
+							</li>
+						</ul>
+						<form>
+							<input type="text" placeholder="Search" />
+							<button class="button button-outline">Search</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</section>
 		<section>
-			<h1><? $slot2 ?></h1>
+			<h1>.button</h1>
 			<hr />
 			<section>
-				<a href="#" class="button button-primary button-lg"><? $slot3 ?></a>
+				<a href="#" class="button button-primary button-lg">Button</a>
 				<a href="#" class="button button-primary">Button</a>
 				<a href="#" class="button button-primary button-sm">Button</a>
 				<a href="#" class="buttonConnexion">Connexion</a>
@@ -123,38 +136,6 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<section>
-			<h1>.navbar</h1>
-			<hr />
-			<nav class="navbar">
-				<div class="container">
-					<a href="#" class="navbar_title">Navbar</a>
-					<button class="navbar_toggle_button" data-target="#content">
-						menu
-					</button>
-					<div class="navbar_toggle_content" id="content">
-						<ul>
-							<li>
-								<a href="#" class="active">Home</a>
-							</li>
-							<li>
-								<a href="#">Features</a>
-							</li>
-							<li>
-								<a href="#">Pricing</a>
-							</li>
-							<li>
-								<a href="#" class="disabled">Disabled</a>
-							</li>
-						</ul>
-						<form>
-							<input type="text" placeholder="Search" />
-							<button class="button button-outline">Search</button>
-						</form>
-					</div>
-				</div>
-			</nav>
 		</section>
 		<section>
 			<h1>.slider</h1>

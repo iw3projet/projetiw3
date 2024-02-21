@@ -6,11 +6,12 @@
     </head>
     <body>
         <header class="header">
-            <h1>template du back</h1>
+            <!-- <h1>template du back</h1> -->
+            <img src="/images/GastroMaker.png" alt="Logo" class="logo">
         </header>
         <div class="containerBack">
             <nav class="navigation">
-                <p class="leftSide button button-outline"><a href="#" class="dashboard-text">Dashboard</a></p>
+                <p class="leftSide button button-outline"><a href="/prebuild" class="dashboard-text">Creation</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="article-text">Articles</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="media-text">Medias</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="page-text">Pages</a></p>
