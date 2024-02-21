@@ -7,12 +7,60 @@
         top: 0;
         left: 0;
         transition: background-color 1s;
-        .container {
+        .containerHeader {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            // align-items: center;
         }
         &.sticky {
             background-color: rgba(0, 0, 0, 0.5);
         }
     }
+    
+    .site-header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+    }
+    
+    .site-header nav li {
+        float: left;
+        color: aqua;
+    }
+    
+    .site-header nav a {
+        padding: 1em;
+        display: inline-block;
+        color: var(--white);
+        text-decoration: none;
+    }
+    
+    .site-logo {
+        float: left;
+        line-height: 0;
+    }
+    
+    .site-logo img {
+        width: 80px;
+    }
+
+    .site-footer {
+        padding: 20px 0;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    
+    .site-footer nav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        gap: 1em;
+    }
+    
+    
+
