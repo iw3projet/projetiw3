@@ -5,18 +5,15 @@ namespace App\Core;
 class DB
 {
     private $pdo;
-    private $prefix = "esgi_";
+    private $prefix = PREFIX.'_';
     private $table;
 
     public function __construct()
     {
-        $optionsJson = file_get_contents('./options.json');
-        $optionsArray = json_decode($optionsJson, true);
-        
         //Connexion à la bdd
-        try {
-            $this->pdo = new \PDO("pgsql:host=".$optionsArray["db_host"].";port=5432;dbname=".$optionsArray["db_name"], $optionsArray["db_username"], $optionsArray["db_pwd"]);
-        } catch (\PDOException $exception) {
+        try{
+            $this->pdo = new \PDO("pgsql:host=".DB_HOST.";port=5432;dbname=".DB_NAME, DB_USERNAME, DB_PWD);
+        }catch (\PDOException $exception){
             echo "Erreur de connexion à la base de données : ".$exception->getMessage();
         }
     
@@ -70,8 +67,29 @@ class DB
 
         if($return == "object")
             $query->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+
         return $query->fetch();
     }
+
+    public function select(string $sql, array $parameters)
+    {
+        $query = $this->pdo->prepare($sql);
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
+    
+
+    public function checkUnique(string $bddKey,$value) : bool
+    {
+        $request = $this->getOneBy([$bddKey => $value]);
+        if ($request == 0) 
+        {
+                return true;
+        }else {
+                return false;
+        }
+    }
+}
 
     public function getAllBy(array $data, $return = 'array'): array
     {

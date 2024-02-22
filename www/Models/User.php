@@ -7,12 +7,12 @@ class User extends DB
     protected string $login;
     protected string $email;
     protected string $password;
-    protected string $password_key;
-    protected int $role;
-    protected int $status;
-    protected int $isDeleted;
-    protected string $created;
-    protected string $updated;
+    protected ?string $password_key;
+    protected ?int $role;
+    protected ?int $status;
+    protected ?int $isDeleted;
+    protected ?string $created;
+    protected ?string $updated;
 
     /**
      * @return int

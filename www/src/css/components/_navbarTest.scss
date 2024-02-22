@@ -1,0 +1,150 @@
+    .headerMenu {
+    text-align: center;
+  }
+  
+  .headerMenu img {
+    height: 50px;
+  }
+  
+  .mainMenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .sectionMenu {
+    flex-basis: 50%;
+    margin: 20px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+
+  .sectionMenu img {
+    width: 600px;
+  }
+  
+/******************************************************************************************************/
+  .section3 {
+	background-color: var(--light-grey);
+	padding-bottom: 20px;
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.section3 > .container > h1 {
+	text-align: center;
+	font-size: 1.875rem;
+}
+
+.offer-list {
+	padding: 0;
+	list-style: none;
+	width: 70%;
+	margin: 20px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.offer {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--white);
+	border-radius: 0.625rem;
+	padding: 2rem;
+	height: 100%;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s;
+	position: relative;
+	top: 0;
+	&:hover {
+		box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+		top: -10px;
+	}
+
+	& h1 {
+		font-size: 1.5rem;
+		margin: 0;
+		font-weight: 400;
+	}
+	& h2 {
+		font-size: 2rem;
+		margin: 0;
+		& small {
+			font-weight: 400;
+		}
+	}
+	& ul {
+		padding: 2rem 0 2rem 2rem;
+		margin: 1.25rem 0;
+		list-style-image: url("../images/checklist.svg");
+		border-top: solid thin var(--light-grey);
+		border-bottom: solid thin var(--light-grey);
+	}
+
+	& li {
+		margin-bottom: 1em;
+		&.disabled {
+			opacity: 0.5;
+		}
+	}
+}
+
+.offer-list > li {
+	width: 48%;
+}
+
+.section3 footer {
+	margin-top: 60px;
+	text-align: center;
+}
+
+.textdescriptif {
+    display: flex;
+    align-items: center;
+}
+
+/*****************************************************************************/
+
+
+.section2 {
+	background-color: var(--white);
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.section2 h1 {
+	text-align: center;
+	font-size: 3rem;
+}
+
+.benefit-list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+}
+
+.benefit-list li {
+	width: 25%;
+}
+
+.benefit {
+	text-align: center;
+	padding: 2em;
+
+	& h1 {
+		font-size: 1.25rem;
+	}
+
+	& h2 {
+		font-size: 0.875rem;
+	}
+}

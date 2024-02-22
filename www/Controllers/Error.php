@@ -37,4 +37,11 @@ class Error {
         <?php
         exit; // Arrête l'exécution du script après avoir affiché la page 404
     }
+
+    public function notConnected(): void
+    {
+        echo "vous devez être connecté pour accéder à cette page";
+    }
+
 }
+

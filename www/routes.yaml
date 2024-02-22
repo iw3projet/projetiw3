@@ -50,4 +50,31 @@
 /build:
   controller: PageBuilder
   action: SetComponent
+  
+/forgot-pwd:
+  controller: PwdRecovery
+  action: forgotPwd
 
+/resetpwd:
+  controller: PwdRecovery
+  action: resetPwd
+
+/pagebuilder:
+  controller: PageBuilder
+  action: renderPages
+
+/previewpage:
+  controller: PagePreview
+  action: preview
+
+/update-user:
+  controller: UserUpdate
+  action: updateUser
+
+/connection-error:
+  controller: Error
+  action: notConnected
+
+/uploadimg:
+  controller: ImgUploader
+  action: uploader

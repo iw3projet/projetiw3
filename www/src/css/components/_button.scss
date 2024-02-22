@@ -7,15 +7,17 @@
 	font-weight: 600;
 	font-size: rem(16);
 	line-height: rem(18);
-	padding: rem(10) rem(16);
+	// padding: rem(10) rem(16);
 	border-radius: var(--main-radius);
 	border: none;
+	width: 100%;
 	background-color: var(--button-bg-color);
 	cursor: pointer;
 	transition: all var(--transition-duration);
 	&:hover {
 		background-color: var(--button-bg-hover-color);
-		color: var(--text-hover-color);
+		color: var(--grey-darker);
+		// color: var(--text-hover-color);
 	}
 
 	// Modificateurs de couleur
@@ -51,7 +53,7 @@
 
 .buttonConnexion {
 	display: block;
-    width: 60%;
+    width: 15%;
     padding: 10px;
     border: none;
     border-radius: 5px;

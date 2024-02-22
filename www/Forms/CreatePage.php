@@ -50,7 +50,7 @@ class CreatePage {
                     "Title" => [
                         "type" => "text",
                         "id" => "add_page-Ttile",
-                        "label" => "Titre",
+                        "label" => "TITRE",
                         "required" => true,
                         "placeholder" => "Titre de la Page",
                         "value" => "",
@@ -59,7 +59,7 @@ class CreatePage {
                     "slug" => [
                         "type" => "text",
                         "id" => "add_page-slug",
-                        "label" => "Slug",
+                        "label" => "SLUG",
                         "required" => true,
                         "placeholder" => "ajouter un slug",
                         "value" => "",
@@ -72,7 +72,7 @@ class CreatePage {
                         "name" => "add_page-template",
                         "class" => "form-select",
                         "id" => "add_page-template",
-                        "label" => "Template",
+                        "label" => "TEMPLATE",
                         "required" => true,
                         "options" => $this->getAllPageTemplate(),
                     ],
