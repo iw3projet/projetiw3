@@ -17,9 +17,6 @@ use App\Controllers\Page;
 
 echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
 
-
-// echo ('<link rel="stylesheet" type="text/css" href="../../dist/demo.css">');
-
 session_start();
 if (file_exists("Constantes.php")) {
     require_once("Constantes.php");
