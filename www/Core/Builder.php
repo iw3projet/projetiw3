@@ -5,9 +5,10 @@ namespace App\Core;
 class Builder
 {
 
-    public function GenerateComponentForm($nb) : array 
+    public function GenerateComponentForm(int $nb, array $updateVal = null ) : array 
     {
         $result = [];
+
 
         $result["config"] = [
             "method" => "POST",
@@ -18,19 +19,51 @@ class Builder
             "error" => "Paramètrage incorrect"
         ];
 
-        for ($i=1; $i <= $nb; $i++) {
-            $result["elements"]["wysiwyg"]["slot$i"] =
-            [
-                
-                "id" => "add_page-slot$i",
-                "name" => "Slot$i",
-                "label" => "Slot$i",
-                "script" => 'ClassicEditor
-                .create( document.querySelector( \'#add_page-slot'.$i.'\' )).catch( err => {
-                    console.error( err.stack );
-                } );'
+        if ($updateVal != null) 
+        {
+            for ($i=1; $i <= $nb; $i++) {
+                $result["elements"]["wysiwyg"]["slot$i"] =
+                [
+                    
+                    "id" => "add_page-slot$i",
+                    "name" => "Slot$i",
+                    "value" => "feur",
+                    "label" => "Slot$i",
+                    "script" => 
+                    '
+                    ClassicEditor
+                    .create( document.querySelector( \'#add_page-slot'.$i.'\' )).then( editor => {
+                        editor.setData( \''.  $updateVal["slot".$i].'\' );
+                    } )
+                    .catch( err => {
+                        console.error( err.stack );
+                    } );
+                    ',
+    
+                ];
+            }
+        }else {
 
-            ];
+            for ($i=1; $i <= $nb; $i++) {
+                $result["elements"]["wysiwyg"]["slot$i"] =
+                [
+                    
+                    "id" => "add_page-slot$i",
+                    "name" => "Slot$i",
+                    "value" => "feur",
+                    "label" => "Slot$i",
+                    "script" => 
+                    'ClassicEditor
+                    .create( document.querySelector( \'#add_page-slot'.$i.'\' ))
+                    .catch( err => {
+                        console.error( err.stack );
+                    } );
+                    ',
+    
+                ];
+        }
+
+        
 
             
             // partie a ajouter pour l'image loader pas fonctionelle 

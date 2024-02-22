@@ -16,6 +16,8 @@ use App\Controllers\Page;
 // /login?id=3
 
 echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
+
+
 // echo ('<link rel="stylesheet" type="text/css" href="../../dist/demo.css">');
 
 session_start();

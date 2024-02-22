@@ -39,7 +39,7 @@ class PageBuilder
             
         }
 
-        $view = new View("Builder/createPage", "back");
+        $view = new View("Pages/createPage", "back");
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);
     }
@@ -67,7 +67,7 @@ class PageBuilder
 
                     foreach ($_REQUEST as $key => $value) {
                         if (preg_match("/slot[\d]*\w+/", $key)) {
-                            $content[$key] = $value;
+                            $content[$key] = $value ;
                         }
                     }
 
@@ -89,8 +89,88 @@ class PageBuilder
                 }
             }
         }
-        $view = new View("Builder/addPageComponent", "back");
+        $view = new View("Pages/addPageComponent", "back");
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);
     }
+
+    public static function preview() : void
+    {
+        $page = "PagesTemplates/".$_GET["preview"];
+        $view = new View($page,"front");;
+
+    }
+
+    public function showAllPages() : void
+    {
+
+        $page = new Page();
+        $pageList = $page->getAll();
+        $view = new View("Pages/showAllPages","back");
+        $view->assign("pages",$pageList);
+    }
+
+    public function deletePage() : void
+    {   
+        $pageId = $_GET["id"];
+
+        $page = new Page();
+
+        $page->deleteBy(["id" => $pageId]);
+
+        header('Location: /showAllPages');
+
+    }
+
+    public function updatePage() : void 
+    {
+        $builder = new Builder;
+        if (isset($_GET["content"])) {
+            $configForm = $builder->GenerateComponentForm($builder->GetTemplateSlots($_GET["tpl"]),(array)json_decode($_GET["content"]));
+        }else {
+            $configForm = $builder->GenerateComponentForm($builder->GetTemplateSlots($_GET["tpl"]));
+
+        }
+
+        
+
+        $errors = [];
+
+        if ($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]) {
+            $verificator = new Verificator();
+
+            if ($verificator->checkForm($configForm, $_POST, $errors)) {
+                try {
+                    $Page = new Page;
+                    var_dump($_REQUEST["slot1"]);
+
+
+                    $content = [];
+
+                    foreach ($_REQUEST as $key => $value) {
+                        if (preg_match("/slot[\d]*\w+/", $key)) {
+                            $content[$key] = $value ;
+                        }
+                    }
+
+                    $Page->setId(Verificator::securiseValue($_GET["id"]));
+                    $json_content = json_encode($content);
+                    $Page->setContent($json_content);
+                    $Page->setUpdated(date("Y-m-d H:i:s"));
+
+                    
+                    $Page->save();
+
+
+                    header('Location: /');
+                } catch (PDOException $err) {
+                    $errors[] = $err;
+                }
+            }
+        }
+        $view = new View("Pages/addPageComponent", "back");
+        $view->assign("form", $configForm);
+        $view->assign("formErrors", $errors);
+    }
+
 }

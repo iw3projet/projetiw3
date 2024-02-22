@@ -73,11 +73,61 @@ class DB
         return $query->fetch();
     }
 
+    public function getAll($return = 'array'): array 
+    {
+        $sql = "SELECT * FROM " . $this->table;
+        
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        if ($return === 'object') {
+            return $query->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        } else {
+            return $query->fetchAll();
+        }
+        
+    }
+
+    public function getAllBy(array $data, $return = 'array'): array
+    {
+        $sql = "SELECT * FROM " . $this->table . " WHERE ";
+        $params = [];
+        foreach ($data as $key => $value) {
+            $sql .= $key . "=:" . $key . " AND ";
+            $params[':' . $key] = $value;
+        }
+        $sql = substr($sql, 0, -5);
+        $query = $this->pdo->prepare($sql);
+        $query->execute($params);
+
+        if ($return === 'object') {
+            return $query->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        } else {
+            return $query->fetchAll();
+        }
+    }
+
     public function select(string $sql, array $parameters)
     {
         $query = $this->pdo->prepare($sql);
         $query->execute($parameters);
         return $query->fetchAll();
+    }
+
+    public function deleteBy(array $data, $return = "array") :  object|array|int 
+    {
+        $sql = "DELETE FROM " . $this->table . " WHERE ";
+        foreach ($data as $key => $value) {
+            $sql .= $key . "=:" . $key . " AND ";
+        }
+        $sql = substr($sql, 0, -5);
+        $query = $this->pdo->prepare($sql);
+        $query->execute($data);
+
+        if($return == "object")
+            $query->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+
+        return $query->fetch();
+
     }
     
 

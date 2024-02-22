@@ -51,6 +51,7 @@
                         <textarea 
                                 id="<?= $wysiwyg["id"] ?? "" ?>"
                                 name="<?= $name ?>" 
+                                value="<?= $wysiwyg["value"] ?? "" ?>" 
                         >
                 
                         </textarea>

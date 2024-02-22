@@ -75,7 +75,12 @@ class Verificator
         $result = "";
 
 
-        $value = strip_tags($value);
+        $value = strip_tags($value,'<div><span><p><br><hr><hgroup><h1><h2><h3><h4><h5><h6>
+        <ul><ol><li><dl><dt><dd><strong><em><b><i><u>
+        <img><a><abbr><address><blockquote><area><audio><video>
+        <fieldset><label><input><textarea>
+        <caption><table><tbody><td><tfoot><th><thead><tr>
+        <iframe>');
 
 
 
