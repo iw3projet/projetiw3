@@ -62,7 +62,6 @@ class DB
         }
         $sql = substr($sql, 0, -5);
         $query = $this->pdo->prepare($sql);
-        //var_dump($data);
         $query->execute($data);
 
         if($return == "object")
@@ -71,6 +70,19 @@ class DB
         return $query->fetch();
     }
 
+    public function getAll($return = 'array'): array 
+    {
+        $sql = "SELECT * FROM " . $this->table;
+
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        if ($return === 'object') {
+            return $query->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        } else {
+            return $query->fetchAll();
+        }
+
+    }
     public function select(string $sql, array $parameters)
     {
         $query = $this->pdo->prepare($sql);

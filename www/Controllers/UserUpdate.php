@@ -52,15 +52,14 @@ class UserUpdate{
                         $data = array("email" => $_SESSION["auth_user"]["email"]);
                         $user = new User();
                         $user_data = $user->getOneBy(["email" => $_SESSION["auth_user"]["email"]]);
-                        $user->setId($user_data["id"]);
-                        //var_dump($user);             
+                        $user->setId($user_data["id"]);           
                         $user->setLogin($_REQUEST["username"]);
                         $user->save();
 
                         header('Location: /');
                     }
                     
-                    //header('Location: /');
+                    header('Location: /404');
                 }
             }
 
@@ -72,4 +71,49 @@ class UserUpdate{
         }
             
     }
+
+    public function updateRoleUser()
+{
+    $allUsers = new User();
+    $allUsers = $allUsers->getAll();
+
+    if (isset($_SESSION["auth_user"]) && !empty($_SESSION["auth_user"]["email"])) {
+        $user = new User();
+        $userData = $user->getOneBy(["email" => $_SESSION["auth_user"]["email"]]);
+        if ($userData["role"] == 1 ) {
+            if (isset($_REQUEST['action'])) {
+                $action = $_REQUEST['action'];
+                $user = new User();
+
+                if ($action == '2') {
+                    $user->setId($_REQUEST['userId']);
+                    $user->setRole(2);
+                    $user->save();
+                } elseif ($action == '3') {
+                    $user->setId($_REQUEST['userId']);
+                    $user->setRole(3);
+                    $user->save();
+                } elseif ($action == '4') {
+                    $user->setId($_REQUEST['userId']);
+                    $user->setRole(4);
+                    $user->save();
+                } else {
+                    $errors[] = "Action non valide.";
+                }
+
+
+                header('Location: /role');
+                exit;
+            }
+        } else {
+            header('Location: /404');
+        }
+    } else {
+        header('Location: /404');
+    }
+
+    $view = new View("Admin/role", "back");
+    $view->assign("users", $allUsers);
+}
+
 }

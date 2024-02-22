@@ -25,17 +25,12 @@ class Verificator
     }
     
     if ($inputs != count($data)) {
-        var_dump($data);
-        var_dump($inputs);
-        // Le nombre de champs dans le formulaire ne correspond pas au nombre attendu
         $errors[] = "Tentative de hack";
         return false;
     }
 
-    // Vérifier chaque champ du formulaire
     foreach ($config['elements']['inputs'] as $name => $input) {
         if (!isset($data[$name])) {
-            // Le champ requis n'est pas présent dans les données
             $errors[] = "Tentative de hack";
             return false;
         }
@@ -166,7 +161,6 @@ class Verificator
             //$pwd = password_hash($db_pwd, PASSWORD_DEFAULT);
 
 
-            var_dump("là");
 
             
             // $updatedJsonData = json_encode($optionsArray, JSON_PRETTY_PRINT);

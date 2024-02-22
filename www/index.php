@@ -109,8 +109,6 @@ else if (Page::showBySlug($uri))
 
 }
 else {
-    //S'il n'y a pas de correspondance => page 404
-        //var_dump($uri);
         include "Controllers/Error.php";
         $object = new Controllers\Error();
         $object->page404();

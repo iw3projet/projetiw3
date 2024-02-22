@@ -12,21 +12,6 @@ class Error {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Page non trouvée</title>
-            <style>
-                body {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                    margin: 0;
-                    font-family: Arial, sans-serif;
-                }
-                .error-message {
-                    text-align: center;
-                    font-size: 24px;
-                    color: #FF0000;
-                }
-            </style>
         </head>
         <body>
             <div class="error-message">

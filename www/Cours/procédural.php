@@ -132,11 +132,8 @@ $class[]="Robin";
 
 echo "<pre>";
 print_r($class);
-//var_dump($class);
 
 $student = ["lastname"=>"dany", "firstname"=>"sambo", "average"=>14];
-//Afficher Prénom nom a une moyenne de note/20
-//dany sambo a une moyenne de 14/20
 echo $student["firstname"]." ".$student["lastname"]." a une moyenne de ".$student["average"]."/20";
 
 $array = [

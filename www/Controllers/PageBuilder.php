@@ -21,19 +21,27 @@ class PageBuilder
         $form = new CreatePage();
         $configForm = $form->getConfig();
         $errors = [];
+        
 
         $page = new Page();
 
         if ($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]) {
             $verificator = new Verificator();
+
+            $user = new User();
+            $userData = $user->getOneBy(["email" => $_SESSION["auth_user"]["email"]]);
+            if ($userData["role"] == 1 || $userData["role"] == 2 ) {
             
-            if ($page->checkSlug($_REQUEST["slug"]) && $page->checkUnique("title",$_REQUEST["Title"])) 
-            {
-                if ($verificator->checkForm($configForm, $_REQUEST, $errors)) {
-                    header('Location: /build?title=' . $_REQUEST["Title"] . '&tpl=' . $_REQUEST["template"] . '&slug=' . $_REQUEST["slug"]);
+                if ($page->checkSlug($_REQUEST["slug"]) && $page->checkUnique("title",$_REQUEST["Title"])) 
+                {
+                    if ($verificator->checkForm($configForm, $_REQUEST, $errors)) {
+                        header('Location: /build?title=' . $_REQUEST["Title"] . '&tpl=' . $_REQUEST["template"] . '&slug=' . $_REQUEST["slug"]);
+                    }
+                }else {
+                    $errors[] = "Paramètrage Incorrect ";
                 }
-            }else {
-                $errors[] = "Paramètrage Incorrect ";
+            }else{
+                header('Location: 404');
             }
             
             
@@ -59,7 +67,6 @@ class PageBuilder
             if ($verificator->checkForm($configForm, $_POST, $errors)) {
                 try {
                     $Page = new Page;
-                    var_dump($_REQUEST["slot1"]);
                     $Page->settitle(Verificator::securiseValue($_GET["title"]));
 
 

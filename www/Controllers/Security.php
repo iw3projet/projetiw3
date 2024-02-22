@@ -19,7 +19,6 @@ class Security
 
         if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
             $verificator = new Verificator();
-            //Est-ce que les données sont OK
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
                 $user = new User;
@@ -36,13 +35,11 @@ class Security
                     }
                 }else {
                     $errors[] = "Identifiants inccorects";
-                    //header('Location: /login');
                 }
   
             }else{
                 $_POST["user"] = "test";
 
-                // echo "erreur de form";
             }
         }
 
@@ -68,13 +65,13 @@ class Security
 
         if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
             $verificator = new Verificator();
-            //Est-ce que les données sont OK
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
                 $user = new User();
-                $user->setLogin($_REQUEST['username']);
-                $user->setEmail($_REQUEST['email']);
-                $user->setPwd($_REQUEST['pwd']);
+                $user->setLogin(Verificator::securiseValue($_REQUEST['username']));
+                $user->setEmail(Verificator::securiseValue($_REQUEST['email']));
+                $user->role(4);
+                $user->setPwd(Verificator::securiseValue($_REQUEST['pwd']));
                 $user->save();
                 header('Location: /');
             }

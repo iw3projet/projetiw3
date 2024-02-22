@@ -20,7 +20,6 @@ class Functions {
             die ("Error decoding JSON in 'options' file.");
         } else {
             $isInstalled = $optionsArray['is_installed'];
-            //var_dump($isInstalled);
             if (!$isInstalled) {
                 header('Location: /install');
             }
@@ -36,6 +35,7 @@ class Functions {
             $user->setLogin($username);
             $user->setPwd($pwd);
             $user->setEmail($email);
+            $user->setRole(1);
             $user->save();
 
             $optionsArray["is_installed"] = true;
@@ -57,13 +57,11 @@ class Functions {
             $user = new User();
             $user->select($sql, $data);
         } catch (\Throwable $th) {
-            var_dump($th);
         }
     }
 
     public function createConstFile($host, $user, $username, $pwd) {
         try {
-            var_dump("ici");
             if (file_exists("/Constantes.php")) {
                 return false;
             }
