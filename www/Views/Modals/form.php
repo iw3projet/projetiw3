@@ -1,7 +1,7 @@
 <?php if (!empty($errors)) : ?>
-        <div style="background-color: red;">
-                <?php echo implode("<br>", $errors); ?>
-        </div>
+    <div style="background-color: red;">
+        <?php echo implode("<br>", $errors); ?>
+    </div>
 <?php endif; ?>
 
 

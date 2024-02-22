@@ -62,6 +62,7 @@ class DB
         }
         $sql = substr($sql, 0, -5);
         $query = $this->pdo->prepare($sql);
+        //var_dump($data);
         $query->execute($data);
 
         if($return == "object")
