@@ -9,6 +9,16 @@
 
 <body>
 
+<head>
+    <meta charset="UTF-8" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="../../dist/demo.css">
+    <title>demo</title>
+</head>
+
+<body>
+
+
+    <?php
 
     $slot1 = null;
     $slot2 = null;
