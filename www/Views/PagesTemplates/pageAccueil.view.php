@@ -26,19 +26,35 @@
     $slot11 = null;
 
     $slots = 11;
-    
+
     $json_content = $this->data;
 
     if (isset($json_content["content"])) {
         $content = json_decode($json_content["content"]);
-    
+
         foreach ($content as $key => $value) {
             $$key = $value;
         }
     }
-    
-
     ?>
+    <header id="header" class="site-header">
+        <div class="containerHeader">
+            <a href="#" class="site-logo">
+                <img src="/images/logos.svg" alt="Logo" />
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a>|</a></li>
+                    <li><a href="/register">S'inscrire</a></li>
+                    <li><a href="/login">Se connecter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <section>
         <div class="banner banner-text" style="background-image: url('/images/fond.jpg')">
             <p>

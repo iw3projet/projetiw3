@@ -16,7 +16,7 @@
                 <p class="leftSide button button-outline"><a href="/prebuild" class="dashboard-text">Creation</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="page-text">Pages</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="comment-text">Comments</a></p>
-                <p class="leftSide button button-outline"><a href="#" class="user-text">Users</a></p>
+                <p class="leftSide button button-outline"><a href="/update-user" class="user-text">Users</a></p>
             </nav>
             <main class="section">
                 <?php
