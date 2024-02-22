@@ -190,7 +190,7 @@ class ReviewController
                             header('Location: /unreview');
 
                         } elseif($_REQUEST['action'] == 'delete') {
-                            $review->deleteById($_REQUEST['id']);
+                            $review->deleteBy(["id" => $_REQUEST['id']]);
                             header('Location: /unreview');
                         } else {
                             $errors[] = "Action non valide.";

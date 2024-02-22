@@ -32,21 +32,25 @@ class Verificator
         return false;
     }
 
+    if (array_key_exists("inputs",$config)) 
+    {
+        foreach ($config['elements']['inputs'] as $name => $input) {
+            if (!isset($data[$name])) {
+                // Le champ requis n'est pas présent dans les données
+                $errors[] = "Tentative de hack";
+                return false;
+            }
+            //Commencer à traiter les vérifications spécifiques pour chaque champ
+            if ($input["type"] == "email" && !self::checkEmail($data[$name])) {
+                $errors[] = "Email incorrect";
+                return false;
+            } elseif ($input["type"] == "password" && !self::checkPwd($data[$name])) {
+                $errors[] = "Mot de passe incorrect";
+                return false;
+            }
+    }
     // Vérifier chaque champ du formulaire
-    foreach ($config['elements']['inputs'] as $name => $input) {
-        if (!isset($data[$name])) {
-            // Le champ requis n'est pas présent dans les données
-            $errors[] = "Tentative de hack";
-            return false;
-        }
-        //Commencer à traiter les vérifications spécifiques pour chaque champ
-        if ($input["type"] == "email" && !self::checkEmail($data[$name])) {
-            $errors[] = "Email incorrect";
-            return false;
-        } elseif ($input["type"] == "password" && !self::checkPwd($data[$name])) {
-            $errors[] = "Mot de passe incorrect";
-            return false;
-        }
+    
     }
 
     // Toutes les vérifications ont réussi

@@ -49,7 +49,8 @@
 
 /build:
   controller: PageBuilder
-  
+  action: SetComponent
+
 /forgot-pwd:
   controller: PwdRecovery
   action: forgotPwd
