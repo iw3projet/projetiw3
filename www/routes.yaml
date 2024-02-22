@@ -6,13 +6,22 @@
   controller: Main
   action: aboutUs
 
-/reviews/add:
+/addreview:
   controller: ReviewController
-  action: showAddReviewForm
+  action: createReview
 
 /review:
   controller: ReviewController
   action: showApprovedReview
+
+/unreview:
+  controller: ReviewController
+  action: manageReview
+
+/myreview:
+  controller: ReviewController
+  action: updateReview
+
 
 /contact:
   controller: Main
@@ -41,3 +50,4 @@
 /build:
   controller: PageBuilder
   action: SetComponent
+

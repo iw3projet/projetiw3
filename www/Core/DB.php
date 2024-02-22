@@ -65,6 +65,7 @@ class DB
         }
         $sql = substr($sql, 0, -5);
         $query = $this->pdo->prepare($sql);
+        //var_dump($data);
         $query->execute($data);
 
         if($return == "object")
@@ -90,4 +91,18 @@ class DB
             return $query->fetchAll();
         }
     } 
+
+    public function deleteById(int $id): bool
+    {
+        // Préparer la requête SQL pour supprimer l'entrée avec l'ID spécifié
+        $sql = "DELETE FROM " . $this->table . " WHERE id = :id";
+        $params = [':id' => $id];
+
+        // Préparer et exécuter la requête
+        $query = $this->pdo->prepare($sql);
+        $success = $query->execute($params);
+
+        // Retourner vrai si la suppression a réussi, sinon faux
+        return $success;
+    }
 }

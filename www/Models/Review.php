@@ -7,7 +7,7 @@ use App\Core\DB;
 class Review extends DB
 {
 
-    protected ?int $id = null;
+    private ?int $id = null;
     protected string $content;
     protected string $created;
     protected ?string $updated;
@@ -23,7 +23,7 @@ class Review extends DB
     }
 
     /**
-     * @param int $id
+     * @param int $id_review
      */
     public function setId(int $id): void
     {
@@ -71,7 +71,7 @@ class Review extends DB
     }
 
     /**
-     * @param int $id
+     * @param int $user_id
      */
     public function setUserId(int $user_id): void
     {

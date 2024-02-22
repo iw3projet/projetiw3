@@ -1,10 +1,8 @@
 DROP TABLE IF EXISTS esgi_user CASCADE;
 DROP TABLE IF EXISTS esgi_page CASCADE;
-DROP TABLE IF EXISTS esgi_template CASCADE;
 DROP TABLE IF EXISTS esgi_setting CASCADE;
-DROP TABLE IF EXISTS esgi_term CASCADE;
-DROP TABLE IF EXISTS esgi_comment CASCADE;
-DROP TABLE IF EXISTS esgi_media CASCADE;
+DROP TABLE IF EXISTS esgi_review CASCADE;
+
 
 CREATE TABLE esgi_user (
     id_user SERIAL,
@@ -32,24 +30,15 @@ CREATE TABLE esgi_page (
 );
 
 CREATE TABLE esgi_review (
-    id_review SERIAL,
-    content VARCHAR(255),
+    id SERIAL PRIMARY KEY,
+    content TEXT,
     created date,
     updated date,
     approved smallint,
-    user_id integer,
-    PRIMARY KEY (id_review),
-    FOREIGN KEY (user_id) REFERENCES esgi_user(id_user)
+    user_id integer REFERENCES esgi_user(id_user)
 );
 
-CREATE TABLE esgi_media (
-    id_media SERIAL,
-    created date,
-    updated date,
-    page_id integer,
-    PRIMARY KEY (id_media),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id_page)
-);
+
 
 CREATE TABLE esgi_setting (
     id_setting SERIAL,
@@ -63,24 +52,5 @@ CREATE TABLE esgi_setting (
 
 
 
-CREATE TABLE esgi_template (
-    id_template SERIAL,
-    name VARCHAR(255),
-    created date,
-    updated date,
-    page_id integer,
-    PRIMARY KEY (id_template),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id_page)
-);
-
-
-
-CREATE TABLE esgi_term (
-    id_terms SERIAL,
-    tagname VARCHAR(255),
-    page_id integer,
-    PRIMARY KEY (id_terms),
-    FOREIGN KEY (page_id) REFERENCES esgi_page(id_page)
-);
 
 
