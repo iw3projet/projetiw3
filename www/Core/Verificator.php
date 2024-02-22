@@ -96,6 +96,8 @@ class Verificator
             return false;
         }
 
+        $email = strtolower($email); 
+
         $sql = 'SELECT * FROM '.PREFIX.'_user WHERE email = :email';
         $query= $pdo->prepare($sql);
         $query->execute(['email'=> $email]);
@@ -163,7 +165,7 @@ class Verificator
             //$pwd = password_hash($db_pwd, PASSWORD_DEFAULT);
 
 
-            var_dump("là");
+            // var_dump("là");
 
             
             // $updatedJsonData = json_encode($optionsArray, JSON_PRETTY_PRINT);

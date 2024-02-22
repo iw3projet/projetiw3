@@ -30,7 +30,7 @@ class PwdRecovery{
                 $result = $verificator -> doesEmailExists($_REQUEST['email']);
                 
                 if (!$result) {
-                    var_dump($result);
+                    // var_dump($result);
                     $errors[]="L'email n'existe pas";
                 }else {
                     $email = $_REQUEST['email'];
@@ -61,7 +61,7 @@ class PwdRecovery{
                     $mail = new EmailSender();
                     $mail->send_email($email, "john", $subject, $body);
 
-                    var_dump("ok");
+                    // var_dump("ok");
 
 
 
@@ -122,7 +122,7 @@ class PwdRecovery{
             }
 
         }else{
-            var_dump("no");
+            // var_dump("no");
         }
         
     }

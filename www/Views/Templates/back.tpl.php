@@ -14,14 +14,9 @@
         <div class="containerBack">
             <nav class="navigation">
                 <p class="leftSide button button-outline"><a href="/prebuild" class="dashboard-text">Creation</a></p>
-                <p class="leftSide button button-outline"><a href="#" class="article-text">Articles</a></p>
-                <p class="leftSide button button-outline"><a href="#" class="media-text">Medias</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="page-text">Pages</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="comment-text">Comments</a></p>
-                <p class="leftSide button button-outline"><a href="#" class="appearance-text">Appearance</a></p>
-                <p class="leftSide button button-outline"><a href="#" class="settings-text">Settings</a></p>
                 <p class="leftSide button button-outline"><a href="#" class="user-text">Users</a></p>
-                <p class="leftSide button button-outline"><a href="#" class="tools-text">Tools</a></p>
             </nav>
             <main class="section">
                 <?php

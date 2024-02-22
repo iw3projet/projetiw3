@@ -16,7 +16,6 @@ use App\Controllers\Page;
 // /login?id=3
 
 echo ('<link rel="stylesheet" type="text/css" href="dist/css/style.css" />'); 
-// echo ('<link rel="stylesheet" type="text/css" href="../../dist/demo.css">');
 
 session_start();
 if (file_exists("Constantes.php")) {
@@ -110,7 +109,7 @@ else if (Page::showBySlug($uri))
 }
 else {
     //S'il n'y a pas de correspondance => page 404
-        var_dump($uri);
+        // var_dump($uri);
         include "Controllers/Error.php";
         $object = new Controllers\Error();
         $object->page404();
