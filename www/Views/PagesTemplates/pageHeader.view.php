@@ -27,7 +27,7 @@
         ?>  
 	   <header id="header" class="site-header">
 			<div class="containerHeader">
-				<a href="#" class="site-logo">
+				<a href="#" class="logo">
 					<img src="/images/logos.svg" alt="Logo" />
 				</a>
 				<nav>
