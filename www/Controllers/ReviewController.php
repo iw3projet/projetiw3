@@ -43,9 +43,9 @@ class ReviewController
                         
                         // Créer une nouvelle instance de Review
                         $review = new Review();
-
+                        //var_dump($user_data);
                         // Définir l'ID de l'utilisateur pour la review
-                        $review->setUserId($user_data["id_user"]);
+                        $review->setUserId($user_data["id"]);
 
                         // Définir le contenu de la review
                         $review->setContent($_REQUEST["content"]);
@@ -71,7 +71,7 @@ class ReviewController
             // Rediriger vers la page de connexion
             header('Location:/login');
         }
-        $view = new View("Main/addreview", "front");
+        $view = new View("Review/addreview", "front");
         $view->assign("form", $configForm);
         $view->assign("formErrors", $errors);
     }
@@ -82,7 +82,7 @@ class ReviewController
         $form = new UpdateReview();
         $configForm = $form->getConfig();
         $errors = []; // Initialisation de la variable $errors
-    
+        var_dump($_SESSION);
         
         $all_review = new Review();
         
@@ -92,7 +92,7 @@ class ReviewController
             // Récupérer l'utilisateur par son email depuis la session
             $user = new User();
             $user_data = $user->getOneBy(["email" => $_SESSION["auth_user"]["email"]]);
-            $all_review = $all_review->getAllBy(['user_id' => $user_data["id_user"]]);
+            $all_review = $all_review->getAllBy(['id' => $user_data["id"]]);
             // Vérifier si l'utilisateur existe
             if ($user_data) {
                 // Vérifier si les données du formulaire sont valides
@@ -115,7 +115,7 @@ class ReviewController
                     $review->save();
     
                     // Rediriger vers la page des critiques approuvées ou une autre page appropriée
-                    header('Location: /login');
+                    header('Location: /myreview');
                     exit; // Assurez-vous de terminer le script après la redirection
                     
                 }
@@ -187,8 +187,11 @@ class ReviewController
                             $review->setId($_REQUEST['id']);
                             $review->setApproved(1);
                             $review->save();
+                            header('Location: /unreview');
+
                         } elseif($_REQUEST['action'] == 'delete') {
                             $review->deleteById($_REQUEST['id']);
+                            header('Location: /unreview');
                         } else {
                             $errors[] = "Action non valide.";
                             // Rediriger vers la page appropriée après avoir effectué l'action

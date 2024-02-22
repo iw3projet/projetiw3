@@ -89,7 +89,7 @@ class DB
                 return false;
         }
     }
-}
+
 
     public function getAllBy(array $data, $return = 'array'): array
     {
