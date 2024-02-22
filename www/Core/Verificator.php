@@ -32,21 +32,25 @@ class Verificator
         return false;
     }
 
+    if (array_key_exists("inputs",$config)) 
+    {
+        foreach ($config['elements']['inputs'] as $name => $input) {
+            if (!isset($data[$name])) {
+                // Le champ requis n'est pas présent dans les données
+                $errors[] = "Tentative de hack";
+                return false;
+            }
+            //Commencer à traiter les vérifications spécifiques pour chaque champ
+            if ($input["type"] == "email" && !self::checkEmail($data[$name])) {
+                $errors[] = "Email incorrect";
+                return false;
+            } elseif ($input["type"] == "password" && !self::checkPwd($data[$name])) {
+                $errors[] = "Mot de passe incorrect";
+                return false;
+            }
+    }
     // Vérifier chaque champ du formulaire
-    foreach ($config['elements']['inputs'] as $name => $input) {
-        if (!isset($data[$name])) {
-            // Le champ requis n'est pas présent dans les données
-            $errors[] = "Tentative de hack";
-            return false;
-        }
-        //Commencer à traiter les vérifications spécifiques pour chaque champ
-        if ($input["type"] == "email" && !self::checkEmail($data[$name])) {
-            $errors[] = "Email incorrect";
-            return false;
-        } elseif ($input["type"] == "password" && !self::checkPwd($data[$name])) {
-            $errors[] = "Mot de passe incorrect";
-            return false;
-        }
+    
     }
 
     // Toutes les vérifications ont réussi
@@ -78,7 +82,12 @@ class Verificator
         $result = "";
 
 
-        $value = strip_tags($value);
+        $value = strip_tags($value,'<div><span><p><br><hr><hgroup><h1><h2><h3><h4><h5><h6>
+        <ul><ol><li><dl><dt><dd><strong><em><b><i><u>
+        <img><a><abbr><address><blockquote><area><audio><video>
+        <fieldset><label><input><textarea>
+        <caption><table><tbody><td><tfoot><th><thead><tr>
+        <iframe>');
 
 
 

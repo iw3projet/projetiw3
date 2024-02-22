@@ -50,7 +50,7 @@
 /build:
   controller: PageBuilder
   action: SetComponent
-  
+
 /forgot-pwd:
   controller: PwdRecovery
   action: forgotPwd
@@ -64,8 +64,20 @@
   action: renderPages
 
 /previewpage:
-  controller: PagePreview
+  controller: PageBuilder
   action: preview
+
+/showallpages:
+  controller: PageBuilder
+  action: showAllPages
+  
+/deletepage:
+  controller: PageBuilder
+  action: deletePage
+
+/updatepage:
+  controller: PageBuilder
+  action: updatePage
 
 /update-user:
   controller: UserUpdate

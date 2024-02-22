@@ -120,6 +120,19 @@ class Page extends DB
         $this->created = $time;
     }
 
+    public function getUpdated(): ?string
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param date updated
+     */
+    public function setUpdated(string $updated): void
+    {
+        $this->updated = $updated;
+    }
+
     public function checkSlug($slug): bool
     {   
         $slug = urlencode($slug);
