@@ -10,8 +10,6 @@
 <body>
 
 
-    <?php
-
     $slot1 = null;
     $slot2 = null;
     $slot3 = null;
