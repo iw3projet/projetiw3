@@ -1,6 +1,6 @@
     .site-header {
         background-color: transparent;
-        padding: 10px 0;
+        padding: 0.625rem 0;
         position: fixed;
         width: 100%;
         z-index: 10;
@@ -42,11 +42,11 @@
     }
     
     .site-logo img {
-        width: 80px;
+        width: 5rem;
     }
 
     .site-footer {
-        padding: 20px 0;
+        padding: 1.25rem 0;
         .container {
             display: flex;
             justify-content: space-between;

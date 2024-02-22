@@ -17,7 +17,7 @@
                 $slots = 3 ;
 
                 $json_content = $this->data;
-                $content = json_decode($json_content["content"]);
+                // $content = json_decode($json_content["content"]);
 
 				if (isset($json_content["content"])) {
 					$content = json_decode($json_content["content"]);
