@@ -2,9 +2,30 @@
   controller: Main
   action: home
 
-/a-propos:
+/aboutus:
   controller: Main
   action: aboutUs
+
+/addreview:
+  controller: ReviewController
+  action: createReview
+
+/review:
+  controller: ReviewController
+  action: showApprovedReview
+
+/unreview:
+  controller: ReviewController
+  action: manageReview
+
+/myreview:
+  controller: ReviewController
+  action: updateReview
+
+
+/contact:
+  controller: Main
+  action: contact
 
 /login:
   controller: Security
