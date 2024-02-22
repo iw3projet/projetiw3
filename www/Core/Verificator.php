@@ -9,17 +9,10 @@ use App\Includes\Functions;
 class Verificator
 {
 
-<<<<<<< HEAD
     public function checkForm($config, $data, &$errors, $update=0): bool
 {
     if($update){
         $inputs = 1;
-=======
-    public function checkForm($config, $data, &$errors): bool
-    {
-
-
-        $inputs = 0;
 
         foreach ($config['elements'] as $elem => $value_elem) 
         {
@@ -60,7 +53,6 @@ class Verificator
 
 
         return empty($errors);
->>>>>>> 53fddb6 (Debug authentification)
     }
     else{
         $inputs = 0;  

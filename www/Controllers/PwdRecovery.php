@@ -30,7 +30,6 @@ class PwdRecovery{
                 $result = $verificator -> doesEmailExists($_REQUEST['email']);
                 
                 if (!$result) {
-                    var_dump($result);
                     $errors[]="L'email n'existe pas";
                 }else {
                     $email = $_REQUEST['email'];
@@ -47,8 +46,8 @@ class PwdRecovery{
                     $output='<p>Cher utilisateur,</p>';
                     $output.='<p>Veuillez cliquer sur ce lien  afin de réinitialiser votre mot de passe</p>';
                     $output.='<p>-------------------------------------------------------------</p>';
-                    $output.='<p><a href="http://localhost/resetPwd?key='.$key.'&email='.$email.'&action=reset" target="_blank">
-                    http://localhost/resetPwd?key='.$key.'&email='.$email.'&action=reset</a></p>';		
+                    $output.='<p><a href="http://34.155.108.49/resetPwd?key='.$key.'&email='.$email.'&action=reset" target="_blank">
+                    http://34.155.108.49/resetPwd?key='.$key.'&email='.$email.'&action=reset</a></p>';		
                     $output.='<p>-------------------------------------------------------------</p>';
                     $output.='<p>Attention ! Ce lien n\'est valide que pour 24h.</p>';
                     $output.='<p>Si vous n\'êtes pas à l\'origine de cette demande de réinitialisation,
@@ -61,7 +60,6 @@ class PwdRecovery{
                     $mail = new EmailSender();
                     $mail->send_email($email, "john", $subject, $body);
 
-                    var_dump("ok");
 
 
 
@@ -95,7 +93,6 @@ class PwdRecovery{
 
                 $errors = [];
 
-                //var_dump($check["id"]);
 
                 
 
@@ -124,7 +121,7 @@ class PwdRecovery{
             }
 
         }else{
-            var_dump("no");
+            header("Location: /");
         }
         
     }

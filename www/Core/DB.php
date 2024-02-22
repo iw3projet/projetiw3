@@ -140,26 +140,6 @@ class DB
         }
     }
 
-
-    public function getAllBy(array $data, $return = 'array'): array
-    {
-        $sql = "SELECT * FROM " . $this->table . " WHERE ";
-        $params = [];
-        foreach ($data as $key => $value) {
-            $sql .= $key . "=:" . $key . " AND ";
-            $params[':' . $key] = $value;
-        }
-        $sql = substr($sql, 0, -5);
-        $query = $this->pdo->prepare($sql);
-        $query->execute($params);
-
-        if ($return === 'object') {
-            return $query->fetchAll(\PDO::FETCH_CLASS, get_called_class());
-        } else {
-            return $query->fetchAll();
-        }
-    } 
-
     public function deleteById(int $id): bool
     {
         // Préparer la requête SQL pour supprimer l'entrée avec l'ID spécifié
