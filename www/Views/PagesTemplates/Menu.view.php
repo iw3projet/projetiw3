@@ -9,6 +9,16 @@
 
 <body>
 
+<head>
+    <meta charset="UTF-8" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="../../dist/demo.css">
+    <title>demo</title>
+</head>
+
+<body>
+
+
+    <?php
 
     <?php
 
@@ -17,6 +27,7 @@
     $slot3 = null;
     $slot4 = null;
 
+    $slots = 4;
     $slots = 4;
 
         $json_content = $this->data;
@@ -38,6 +49,51 @@
     
 
     <header class="headerMenu">
+        <img src="/images/logos.svg" alt="Logo du restaurant">
+    </header>
+    <main class="mainMenu">
+        <section class="sectionMenu" id="carte">
+            <h2>Carte</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        </section>
+        <div class="flex-container">
+            <section class="sectionMenu" id="viande">
+                <h2>Viande</h2>
+                <img src="/images/CoteDePorc.jpg" alt="Porc">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </section>
+            <section class="sectionMenu" id="vegetarien">
+                <h2>Végétarien</h2>
+                <img src="/images/vegetarien.jpg" alt="Logo du restaurant">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </section>
+            <section class="sectionMenu" id="poisson">
+                <h2>Poisson</h2>
+                <img src="/images/saumon.jpg" alt="Logo du restaurant">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </section>
+            <section class="sectionMenu" id="dessert">
+                <h2>Dessert</h2>
+                <img src="/images/dessert.jpg">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </section>
+        </div>
+    </main>
         <img src="/images/logos.svg" alt="Logo du restaurant">
     </header>
     <main class="mainMenu">
