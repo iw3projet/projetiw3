@@ -2,10 +2,10 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Front</title>
+        <title><?php echo ($this->data["title"])?></title>
     </head>
     <body>
-        <h1>Template du front</h1>
+
         <?php include $this->view;?>
     </body>
 </html>

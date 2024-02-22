@@ -26,13 +26,17 @@
     $slot11 = null;
 
     $slots = 11;
-
+    
     $json_content = $this->data;
-    $content = json_decode($json_content["content"]);
 
-    foreach ($content as $key => $value) {
-        $$key = $value;
+    if (isset($json_content["content"])) {
+        $content = json_decode($json_content["content"]);
+    
+        foreach ($content as $key => $value) {
+            $$key = $value;
+        }
     }
+    
 
     ?>
     <section>

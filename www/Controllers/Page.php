@@ -36,6 +36,7 @@ class Page
 
 
         $view = new View("PagesTemplates/".$data["template"],"front");
+        $view->assign("title",$data["title"]);
         $view->assign("content",$data["content"]);
     }
 

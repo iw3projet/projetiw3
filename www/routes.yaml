@@ -42,6 +42,10 @@
   controller: PageBuilder
   action: renderPages
 
+/previewpage:
+  controller: PagePreview
+  action: preview
+
 /update-user:
   controller: UserUpdate
   action: updateUser
