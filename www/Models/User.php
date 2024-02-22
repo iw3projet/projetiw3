@@ -113,5 +113,13 @@ class User extends DB
         $this->isDeleted = $isDeleted;
     }
 
+    /**
+     * @param bool $isDeleted
+     */
+    public function setUpdated(String $updated): void
+    {
+        $this->updated = $updated;
+    }
+
 
 }

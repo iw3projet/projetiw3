@@ -9,10 +9,58 @@ use App\Includes\Functions;
 class Verificator
 {
 
+<<<<<<< HEAD
     public function checkForm($config, $data, &$errors, $update=0): bool
 {
     if($update){
         $inputs = 1;
+=======
+    public function checkForm($config, $data, &$errors): bool
+    {
+
+
+        $inputs = 0;
+
+        foreach ($config['elements'] as $elem => $value_elem) 
+        {
+            foreach ($config['elements'][$elem] as $key => $value) 
+            {
+                $inputs += 1;
+            }
+        }
+
+        if( $inputs != count($data)){
+            
+            die("Tentative de hack");
+        }
+        //Token CSRF ????
+        if (array_key_exists("inputs",$config['elements'])) 
+        {
+            foreach ($config['elements']['inputs'] as $name=>$input){
+                if(!isset($data[$name])){
+                    die("Tentative de hack");
+                
+    
+                }
+                //Commencer à traiter les verification micro
+                if($input["type"]=="email"){
+                    if (!self::checkEmail($data[$name])) {
+                        $errors[]="Email incorrect";
+                    }else {
+                        $data["email"] = self::securiseValue($data[$name]);
+                    }
+                    
+                }
+                else if($input["type"]=="password" && !self::checkPwd($data[$name])){
+                    $errors[]="Mot de passe incorrect";
+                }
+            }
+        }
+        
+
+
+        return empty($errors);
+>>>>>>> 53fddb6 (Debug authentification)
     }
     else{
         $inputs = 0;  
@@ -110,6 +158,7 @@ class Verificator
 
         $sql = 'SELECT * FROM '.PREFIX.'_user WHERE email = :email';
         $query= $pdo->prepare($sql);
+        $email = strtolower(trim($email));
         $query->execute(['email'=> $email]);
 
         $result =  $query->fetch(\PDO::FETCH_ASSOC);

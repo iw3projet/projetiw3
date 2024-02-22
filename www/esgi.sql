@@ -2,7 +2,7 @@ CREATE TABLE iciprefix_user (
     id SERIAL,
     login VARCHAR(16),
     password VARCHAR(255),
-    email VARCHAR(320),
+    email VARCHAR(320) UNIQUE,
     role smallint,
     status smallint,
     is_deleted smallint,

@@ -72,11 +72,17 @@ class Security
             if($verificator->checkForm($configForm, $_REQUEST, $errors))
             {
                 $user = new User();
-                $user->setLogin($_REQUEST['username']);
-                $user->setEmail($_REQUEST['email']);
-                $user->setPwd($_REQUEST['pwd']);
-                $user->save();
-                header('Location: /');
+                $exists = $verificator->doesEmailExists($_REQUEST['email']);
+                if (!$exists) {
+                    $user->setLogin($_REQUEST['username']);
+                    $user->setEmail($_REQUEST['email']);
+                    $user->setPwd($_REQUEST['pwd']);
+                    $user->save();
+                    header('Location: /');
+                }else{
+                    $errors[]= "cet email est déjà utilisé";
+                }
+                
             }
         }
 

@@ -53,8 +53,10 @@ class UserUpdate{
                         $user = new User();
                         $user_data = $user->getOneBy(["email" => $_SESSION["auth_user"]["email"]]);
                         $user->setId($user_data["id"]);
-                        //var_dump($user);             
+                        //var_dump($user);
+                        $timestamp = date('Y-m-d H:i:s');
                         $user->setLogin($_REQUEST["username"]);
+                        $user->setUpdated($timestamp);
                         $user->save();
 
                         header('Location: /');
