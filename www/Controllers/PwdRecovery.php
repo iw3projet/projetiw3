@@ -110,8 +110,10 @@ class PwdRecovery{
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
                     {
                         $user = new User();
+                        $timestamp = date('Y-m-d H:i:s');
                         $user->setId($check["id"]);
                         $user->setPwd($_REQUEST['pwd']);
+                        $user->setUpdated($timestamp);
                         $user->save();
                     }
                 }

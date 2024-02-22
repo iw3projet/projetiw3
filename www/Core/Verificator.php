@@ -37,8 +37,13 @@ class Verificator
     
                 }
                 //Commencer à traiter les verification micro
-                if($input["type"]=="email" && !self::checkEmail($data[$name])){
-                    $errors[]="Email incorrect";
+                if($input["type"]=="email"){
+                    if (!self::checkEmail($data[$name])) {
+                        $errors[]="Email incorrect";
+                    }else {
+                        $data["email"] = self::securiseValue($data[$name]);
+                    }
+                    
                 }
                 else if($input["type"]=="password" && !self::checkPwd($data[$name])){
                     $errors[]="Mot de passe incorrect";
@@ -98,6 +103,7 @@ class Verificator
 
         $sql = 'SELECT * FROM '.PREFIX.'_user WHERE email = :email';
         $query= $pdo->prepare($sql);
+        $email = strtolower(trim($email));
         $query->execute(['email'=> $email]);
 
         $result =  $query->fetch(\PDO::FETCH_ASSOC);
