@@ -35,14 +35,14 @@ class Install{
                 if($_SERVER["REQUEST_METHOD"] == $configForm["config"]["method"]){
                     $verificator = new Verificator();
 
-                    var_dump("icici");
+                    // var_dump("icici");
                     $allRequestElements = $_REQUEST;
                     foreach ($_GET as $key => $value) {
                         unset($allRequestElements[$key]);
                     }
                     if($verificator->checkForm($configForm, $allRequestElements, $errors))
                     {
-                        var_dump("icici");
+                        // var_dump("icici");
                         $result = $verificator -> is_db_valid($_REQUEST['db_host'],$_REQUEST['db_name'],$_REQUEST['db_userName'],$_REQUEST['db_pwd']);
 
                         if ($result == false) {

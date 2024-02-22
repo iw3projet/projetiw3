@@ -103,7 +103,6 @@
                                 echo $slot5;
                             } else {
                                 echo "Lorem ipsum dolor sit.";
-                                echo "TESSSSSSSSSSSSSSSSSSSSSSSSSTTTT.";
                             } ?>
                         </h1>
                         <h2>
