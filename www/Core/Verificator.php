@@ -44,11 +44,6 @@ class Verificator
                     $errors[]="Mot de passe incorrect";
                 }
             }
-            else if($input["type"]=="password"){
-                if ($name=="pwd_val" && !self::comparePwds($data[$name], $data["pwd"])) {
-                    $errors[]="Les mots de passes doivent être identiques";
-                }
-            }
         }
         
 
